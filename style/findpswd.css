@@ -1,0 +1,95 @@
+body{
+    width: 100%;
+    overflow: hidden;
+}
+.tittle{
+    width: 100%;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    font-size: 0.3rem;
+    text-align: center;
+    color: rgb(81, 119, 235);
+    border-bottom-color: #F7F7F7;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+}
+input {
+	box-sizing: border-box;
+	height: 0.8rem;
+	display: block;
+	float: left;
+    width: 100%;
+	padding: 0.1rem;
+    border: 1px solid rgb(222, 221, 221);
+    outline: none;
+    padding-left: 0.7rem;
+    padding-right: .7rem;
+    border-top:0;
+    border-left:0;
+    border-right: 0;
+}
+input::-webkit-input-placeholder {
+	color: rgb(189, 188, 188);
+	font-size: 0.2rem;
+}
+input:focus {
+    outline: 0;
+    border-bottom: 1px solid rgba(102, 175, 233, .6);
+}
+.inputbox>div{
+    width: 70%;
+    height: 0.8rem;
+    margin:0 auto;
+    text-align: center;
+    margin-top:0.2rem;
+}
+.input2 input{
+    width:60%;
+}
+.people,.lock,.yzmpic{
+    width: 0.5rem;
+    height: 0.5rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+    position: absolute;
+    margin: 0.15rem;
+    background-position: center;
+}
+.people{
+    background-image: url(../pic/denglu.png);
+}
+.lock{
+    background-image: url(../pic/mima.png);
+}
+.yzmpic{
+    background-image: url(../pic/yanzhengma.png);
+}
+.del,.eye{
+    width: 0.4rem;
+    height: 0.4rem;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: block;
+    position: absolute;
+    right: .15rem;
+    margin: 0.2rem 0.05rem;
+    background-position: center;
+}
+.del{
+    background-image: url(../pic/qingchu.png);
+}
+.eye{
+    background-image: url(../pic/biyan.png);
+}
+.yzmbtn{
+    height: 0.7rem;
+    font-size: 0.2rem;
+    line-height: 0.7rem;
+    background-color: rgb(81, 119, 235);
+    color: #fff;
+    border-radius: 100px;
+    padding: 0 0.2rem;
+    display: inline-block;
+    float: right;  
+}
