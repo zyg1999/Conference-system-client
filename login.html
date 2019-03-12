@@ -6,19 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>用户登录</title>
-    <link rel="stylesheet" href="./style/reset.css">
-    <link rel="stylesheet" href="./style/login.css">
 </head>
 
 <body>
     <div class="warp"></div>
     <div class="mask"></div>
+    <input  type="password" autocomplete="off" style="height:0;opacity: 0;">
     <div class="bodybox">
         <p class="tittle">Hello!欢迎回来</p>
         <div class="phonebox">
             <span class="people" style="background-size:72%"></span>
-            <input class="phone" type="text" placeholder="请输入您的手机号" maxlength='11' autocomplete="off" onkeyup="value=value.replace(/^[0]\d*$/,'')">
-            <span class="del"></span>
+            <input class="phone" type="text" placeholder="请输入您的手机号" maxlength='11' autocomplete="off" onkeyup="value=value.replace(/[^\d]/g,'')" ng-pattern="/[^a-zA-Z]/">
+            <span class="del" style="display:none"></span>
         </div>
         <div class="pswdbox">
             <span class="lock"></span>
@@ -29,8 +28,7 @@
         <div class="loginBotton">登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录</div>
         <p class="forget">忘记密码</p>
     </div>
+    
 </body>
-<script src="./js/init.js"></script>
-<script src="./js/login.js"></script>
 
 </html>

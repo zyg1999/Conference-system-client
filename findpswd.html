@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>密码找回</title>
-    <link rel="stylesheet" href="./style/reset.css">
-    <link rel="stylesheet" href="./style/findpswd.css">
 </head>
 <body>
     <div class="tittle">密码找回</div>
+    <input  type="password" autocomplete="off" style="height:0;opacity: 0;">
     <div class="inputbox">
         <div class="input1">
             <span class="people" style="background-size:72%"></span>
-            <input class="phone" type="text" placeholder="请输入您的手机号" maxlength='11' autocomplete="off" onkeyup="value=value.replace(/^[0]\d*$/,'')">
+            <input class="phone" type="text" placeholder="请输入您的手机号" maxlength='11' autocomplete="off" onkeyup="value=value.replace(/[^\d]/g,'')" ng-pattern="/[^a-zA-Z]/">
             <span class="del" style="display:none;"></span>
         </div>
         <div class="input2">
@@ -24,10 +23,8 @@
         <div class="input3">
             <span class="lock"></span>
             <input class="pswd" type="password" placeholder="请设置新密码" autocomplete="off"/>
-            <div id="eyes"></div>
+            <div class="eye"></div>
         </div>
     </div>
 </body>
-<script src="./js/init.js"></script>
-<script src="./js/findpswd.js"></script>
 </html>
