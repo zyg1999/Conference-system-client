@@ -1,0 +1,383 @@
+body{
+    width: 100%;
+    height: 100%;
+}
+.warp{
+    width: 100%;
+    height: 100%;
+}
+
+/*page1顶部导航栏*/
+.page1top{
+    height: 0.8rem;
+    width: 100%;
+    background: linear-gradient(to right,#3C6EE4,#10AAF6);
+    color:#fff;
+    font-size: 0.28rem;
+    text-align: center;
+    line-height: 0.8rem;
+    position: fixed;
+    z-index: 2;
+}
+.topselect{
+    font-size: 0.32rem;
+    text-shadow: 0px 0px #fff;
+}
+.add{
+    float: right;
+    position: absolute;
+    right: 0.15rem;
+    font-size: 0.6rem;
+}
+/*滚动条隐藏滚动*/
+.partbox>div,.partbox{
+    width: 100%;
+}
+.partbox>div {
+    position: relative;
+    overflow: hidden;  
+}
+.partbox::-webkit-scrollbar {
+    display: none;
+}
+.partbox{
+    position: absolute;
+    top: 0.8rem;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: #F8F8F8;
+    width: 100%;
+    bottom: 1rem;
+}
+
+
+/*part1部分*/
+.part1 .details{
+    width: 4.5rem;
+    margin-left: 0.2rem;
+    font-size: 0.22rem;
+    line-height: 0.38rem;
+}
+.itemtittle{
+    margin-bottom: 0.1rem
+}
+.part1 .item{
+    padding: 0.25rem 0.3rem;
+    background-color: #fff;
+    margin: 0.2rem 0rem;
+}
+.meetingtittle{
+    font-size: 0.28rem;
+    line-height: 0.4rem;
+    text-shadow: 0px 0px #666;
+}
+.meetingstatus{
+    background-color: #04C756;
+    color: #fff;
+    padding: 0.01rem 0.15rem;
+    border-radius: 0.1rem;
+    margin-left: 0.1rem;
+    display: inline-block;
+    font-size: 0.2rem;
+    line-height: 0.4rem;
+}
+.more{
+    background-image: url(../pic/item_more.png);
+    width: 0.2rem;
+    height: 0.2rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 0.3rem;
+    height: 0.3rem;
+    display: inline-block;
+    float: right;
+}
+.part1 .details span{
+    width: 1.45rem;
+    position: relative;
+    padding-left: 0.55rem;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.pic1::before{
+    width: 0.3rem;
+    height: 0.3rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0.1rem auto 0.05rem;
+    content: '';
+    position: absolute;
+    left:0.1rem;
+    top:-0.045rem;
+}
+.people::before{
+    background-image: url(../pic/history_meeting_people_sum.png);
+}
+.myself::before{
+    background-image: url(../pic/history_meeting_master.png);
+}
+.adress::before{
+    background-image: url(../pic/history_meeting_place.png);
+}
+.meettime::before{
+    background-image: url(../pic/history_meeting_time_sum.png);
+}
+.sumtime::before{
+    background-image: url(../pic/history_meeting_time.png);
+}
+
+/*part2部分*/
+.part2 .item{
+    padding: 0.25rem 0.3rem;
+    background-color: #fff;
+    margin: 0.2rem 0rem;
+    overflow: hidden;
+    position: relative;
+}
+.part2 span{
+    width: 0.3rem;
+    height: 0.3rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0.1rem auto 0.05rem;
+    vertical-align: middle;
+}
+
+.part2 .item .pic2{
+    width: 0.26rem;
+    height: 0.26rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+ .part2 .details{
+    line-height: 0.35rem;
+    font-size: 0.22rem;
+    margin: 0.1rem;
+    margin-left: 0.2rem;
+}
+.hot{
+    background-image: url(../pic/item_hot.png);
+}
+.time{
+    background-image: url(../pic/item_time.png);
+}
+.accommodate{
+    background-image: url(../pic/item_sum.png);
+}
+.mtroomstatus{
+    position: absolute;
+    font-size: 0.23rem;
+    background-color: #669900;
+    height: 0.5rem;
+    text-align: center;
+    width: 4rem;
+    color: #fff;
+    transform: rotate(45deg);
+    right: -1.55rem;
+    top: 0.3rem;
+    line-height: 0.5rem;
+}
+
+/*part3部分*/
+
+.part3 .item{
+    padding: 0.25rem 0.3rem;
+    background-color: #fff;
+    margin: 0.2rem 0rem;
+}
+.part3 .details{
+    width: 4.5rem;
+    margin-left: 0.2rem;
+    font-size: 0.22rem;
+    line-height: 0.38rem;
+}
+.part3 .details span{
+    width: 1.45rem;
+    position: relative;
+    padding-left: 0.55rem;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.today{
+    width: 2.5rem !important;
+}
+.pic3::before{
+    width: 0.3rem;
+    height: 0.3rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0.1rem auto 0.05rem;
+    content: '';
+    position: absolute;
+    left:0.1rem;
+    top:-0.045rem;
+}
+
+.take::before{
+    background-image: url(../pic/history_meeting_status.png);
+}
+
+.mtmaster::before{
+    background-image: url(../pic/history_meeting_time.png);
+}
+.today::before{
+    background-image: url(../pic/history_meeting_date.png)
+}
+
+.sumtime,.summary{
+    width: 2.8rem !important;
+    margin-top: 0.1rem;
+}
+.sumtime::before,.summary::before{
+    width: 0.3rem;
+    height: 0.3rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0.1rem auto 0.05rem;
+    content: '';
+    position: absolute;
+    left:0.1rem;
+    top:-0.045rem;
+}
+.summary::before{
+    background-image: url(../pic/history_meeting_content.png);
+}
+.sumtime::before{
+    background-image: url(../pic/history_meeting_time_sum.png);
+}
+
+.mtrole{
+    background-color: #EBA704;
+    color: #fff;
+    padding: 0.01rem 0.15rem;
+    border-radius: 0.1rem;
+    margin-left: 0.1rem;
+    display: inline-block;
+    font-size: 0.2rem;
+    line-height: 0.4rem;
+}
+
+/*page2部分*/
+.page2topbox{
+    height: 3rem;
+    width: 100%;
+    background-color: #08B9FD;
+    color: #fff;
+}
+.myrecordtittle{
+    text-align: center;
+    font-size: 0.3rem;
+    display: block;
+    padding:0.15rem;
+}
+.mydetiles{
+    margin-top: 0.25rem;
+}
+.page2headpic{
+    height: 1.4rem;
+    width: 1.4rem;
+    background-image: url(../pic/user_default_icon.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 100px;
+    display: inline-block;
+    float: left;
+    margin:0.12rem;
+}
+.detilestextbox{
+    height: 1.64rem;
+    margin-left: 1.8rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.detilestextbox > div{
+    position: relative;
+    width: 90%;
+    margin: 0.05rem 0;
+}
+.textline1{
+    font-size: 0.25rem;
+}
+.textline2{
+    font-size: 0.2rem;
+}
+.lefttext{
+    float: left;
+}
+.righttext{
+    float: right;
+}
+.year{
+    background-color: #F8F8F8;
+    position: relative;
+    padding-left: 0.8rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    color: #666;
+}
+.year::before{
+    width: 0.7rem;
+    height: 0.7rem;
+    background-image: url(../pic/history_meeting_date.png);
+    background-repeat: no-repeat;
+    background-size: 40% 40%;
+    position: absolute;
+    background-position: center;
+    content: '';
+    left: 0.1rem;
+}
+/*page3部分*/
+
+
+
+/*bottom*/
+.bottombox{
+    position: fixed;
+    bottom: 0;
+    height: 1rem;
+    width: 100%;
+    display: flex;
+    background-color: #fff;
+}
+.bottombox >div{
+    flex-grow: 1;
+    text-align: center;
+    color: #666;
+    font-size: 0.2rem;
+    margin-top: 0.25rem;
+}
+.bottombox span{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 0.3rem;
+    height: 0.3rem;
+    display: inline-block;
+}
+.bottomlogo1{
+    background-image: url(../pic/bnv_meeting.png);
+}
+.bottomlogo2{
+    background-image: url(../pic/bnv_record.png);
+}
+.bottomlogo3{
+    background-image: url(../pic/bnv_mine.png);
+}
+.bottomlogo1select{
+    background-image: url(../pic/bnv_meeting_select.png);
+}
+.bottomlogo2select{
+    background-image: url(../pic/bnv_record_select.png);
+}
+.bottomlogo3select{
+    background-image: url(../pic/bnv_mine_select.png);
+}
