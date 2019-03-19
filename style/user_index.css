@@ -58,6 +58,7 @@ body{
     margin-left: 0.2rem;
     font-size: 0.22rem;
     line-height: 0.38rem;
+    margin-top: 0.1rem;
 }
 .itemtittle{
     margin-bottom: 0.1rem
@@ -145,28 +146,35 @@ body{
     background-repeat: no-repeat;
     margin: 0.1rem auto 0.05rem;
     vertical-align: middle;
+    padding-left: 0.24rem;
 }
 
-.part2 .item .pic2{
-    width: 0.26rem;
-    height: 0.26rem;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    display: inline-block;
-}
  .part2 .details{
     line-height: 0.35rem;
     font-size: 0.22rem;
     margin: 0.1rem;
     margin-left: 0.2rem;
+    position: relative;
 }
-.hot{
+
+.pic2::before{
+    width: 0.26rem;
+    height: 0.26rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    content: '';
+    position: absolute;
+    left: -0.1rem;
+    top: 0.05rem;
+}
+.hot::before{
     background-image: url(../pic/item_hot.png);
 }
-.time{
+.time::before{
     background-image: url(../pic/item_time.png);
 }
-.accommodate{
+.accommodate::before{
     background-image: url(../pic/item_sum.png);
 }
 .mtroomstatus{

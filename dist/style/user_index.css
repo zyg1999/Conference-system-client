@@ -56,3 +56,394 @@
     border: 0;
     border-bottom: 1px solid #e6e6e6;
   }
+body{
+    width: 100%;
+    height: 100%;
+}
+.warp{
+    width: 100%;
+    height: 100%;
+}
+
+/*page1顶部导航栏*/
+.page1top{
+    height: 0.8rem;
+    width: 100%;
+    background: linear-gradient(to right,#3C6EE4,#10AAF6);
+    color:#fff;
+    font-size: 0.28rem;
+    text-align: center;
+    line-height: 0.8rem;
+    position: fixed;
+    z-index: 2;
+}
+.topselect{
+    font-size: 0.32rem;
+    text-shadow: 0px 0px #fff;
+}
+.add{
+    float: right;
+    position: absolute;
+    right: 0.15rem;
+    font-size: 0.6rem;
+}
+/*滚动条隐藏滚动*/
+.partbox>div,.partbox{
+    width: 100%;
+}
+.partbox>div {
+    position: relative;
+    overflow: hidden;  
+}
+.partbox::-webkit-scrollbar {
+    display: none;
+}
+.partbox{
+    position: absolute;
+    top: 0.8rem;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: #F8F8F8;
+    width: 100%;
+    bottom: 1rem;
+}
+
+
+/*part1部分*/
+.part1 .details{
+    width: 4.5rem;
+    margin-left: 0.2rem;
+    font-size: 0.22rem;
+    line-height: 0.38rem;
+    margin-top: 0.1rem;
+}
+.itemtittle{
+    margin-bottom: 0.1rem
+}
+.part1 .item{
+    padding: 0.25rem 0.3rem;
+    background-color: #fff;
+    margin: 0.2rem 0rem;
+}
+.meetingtittle{
+    font-size: 0.28rem;
+    line-height: 0.4rem;
+    text-shadow: 0px 0px #666;
+}
+.meetingstatus{
+    background-color: #04C756;
+    color: #fff;
+    padding: 0.01rem 0.15rem;
+    border-radius: 0.1rem;
+    margin-left: 0.1rem;
+    display: inline-block;
+    font-size: 0.2rem;
+    line-height: 0.4rem;
+}
+.more{
+    background-image: url(../pic/5762e926c639ae0145c0e4a55952439f.png);
+    width: 0.2rem;
+    height: 0.2rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 0.3rem;
+    height: 0.3rem;
+    display: inline-block;
+    float: right;
+}
+.part1 .details span{
+    width: 1.45rem;
+    position: relative;
+    padding-left: 0.55rem;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.pic1::before{
+    width: 0.3rem;
+    height: 0.3rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0.1rem auto 0.05rem;
+    content: '';
+    position: absolute;
+    left:0.1rem;
+    top:-0.045rem;
+}
+.people::before{
+    background-image: url(../pic/ffb8daaf33eacf72aef590e69deb319c.png);
+}
+.myself::before{
+    background-image: url(../pic/4db747597e2c8391bb1e727b18279061.png);
+}
+.adress::before{
+    background-image: url(../pic/14078fcd5d7652dcc3222ea24fc4487f.png);
+}
+.meettime::before{
+    background-image: url(../pic/85c6d70a505edf0b81694ca4be6efc2d.png);
+}
+.sumtime::before{
+    background-image: url(../pic/3fc6e699829933cbfde787588b58fc0e.png);
+}
+
+/*part2部分*/
+.part2 .item{
+    padding: 0.25rem 0.3rem;
+    background-color: #fff;
+    margin: 0.2rem 0rem;
+    overflow: hidden;
+    position: relative;
+}
+.part2 span{
+    width: 0.3rem;
+    height: 0.3rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0.1rem auto 0.05rem;
+    vertical-align: middle;
+    padding-left: 0.24rem;
+}
+
+ .part2 .details{
+    line-height: 0.35rem;
+    font-size: 0.22rem;
+    margin: 0.1rem;
+    margin-left: 0.2rem;
+    position: relative;
+}
+
+.pic2::before{
+    width: 0.26rem;
+    height: 0.26rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    content: '';
+    position: absolute;
+    left: -0.1rem;
+    top: 0.05rem;
+}
+.hot::before{
+    background-image: url(../pic/e796ac0abdd9d06a9bd6183933910969.png);
+}
+.time::before{
+    background-image: url(../pic/21190a3bc2bd911b95a323447b9a862d.png);
+}
+.accommodate::before{
+    background-image: url(../pic/083ff02ef726f66627549fe886edef4a.png);
+}
+.mtroomstatus{
+    position: absolute;
+    font-size: 0.23rem;
+    background-color: #669900;
+    height: 0.5rem;
+    text-align: center;
+    width: 4rem;
+    color: #fff;
+    transform: rotate(45deg);
+    right: -1.55rem;
+    top: 0.3rem;
+    line-height: 0.5rem;
+}
+
+/*part3部分*/
+
+.part3 .item{
+    padding: 0.25rem 0.3rem;
+    background-color: #fff;
+    margin: 0.2rem 0rem;
+}
+.part3 .details{
+    width: 4.5rem;
+    margin-left: 0.2rem;
+    font-size: 0.22rem;
+    line-height: 0.38rem;
+}
+.part3 .details span{
+    width: 1.45rem;
+    position: relative;
+    padding-left: 0.55rem;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.today{
+    width: 2.5rem !important;
+}
+.pic3::before{
+    width: 0.3rem;
+    height: 0.3rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0.1rem auto 0.05rem;
+    content: '';
+    position: absolute;
+    left:0.1rem;
+    top:-0.045rem;
+}
+
+.take::before{
+    background-image: url(../pic/cf490abf1cec52d9ca12b33acceadcb7.png);
+}
+
+.mtmaster::before{
+    background-image: url(../pic/3fc6e699829933cbfde787588b58fc0e.png);
+}
+.today::before{
+    background-image: url(../pic/52a429fc4ff8461f0254617f7080b97c.png)
+}
+
+.sumtime,.summary{
+    width: 2.8rem !important;
+    margin-top: 0.1rem;
+}
+.sumtime::before,.summary::before{
+    width: 0.3rem;
+    height: 0.3rem;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    margin: 0.1rem auto 0.05rem;
+    content: '';
+    position: absolute;
+    left:0.1rem;
+    top:-0.045rem;
+}
+.summary::before{
+    background-image: url(../pic/645df6555b23acb674e55c79d1f03635.png);
+}
+.sumtime::before{
+    background-image: url(../pic/85c6d70a505edf0b81694ca4be6efc2d.png);
+}
+
+.mtrole{
+    background-color: #EBA704;
+    color: #fff;
+    padding: 0.01rem 0.15rem;
+    border-radius: 0.1rem;
+    margin-left: 0.1rem;
+    display: inline-block;
+    font-size: 0.2rem;
+    line-height: 0.4rem;
+}
+
+/*page2部分*/
+.page2topbox{
+    height: 3rem;
+    width: 100%;
+    background-color: #08B9FD;
+    color: #fff;
+}
+.myrecordtittle{
+    text-align: center;
+    font-size: 0.3rem;
+    display: block;
+    padding:0.15rem;
+}
+.mydetiles{
+    margin-top: 0.25rem;
+}
+.page2headpic{
+    height: 1.4rem;
+    width: 1.4rem;
+    background-image: url(../pic/dd2fc9bde5e974ce3a6a7ea7a1afff52.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 100px;
+    display: inline-block;
+    float: left;
+    margin:0.12rem;
+}
+.detilestextbox{
+    height: 1.64rem;
+    margin-left: 1.8rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.detilestextbox > div{
+    position: relative;
+    width: 90%;
+    margin: 0.05rem 0;
+}
+.textline1{
+    font-size: 0.25rem;
+}
+.textline2{
+    font-size: 0.2rem;
+}
+.lefttext{
+    float: left;
+}
+.righttext{
+    float: right;
+}
+.year{
+    background-color: #F8F8F8;
+    position: relative;
+    padding-left: 0.8rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    color: #666;
+}
+.year::before{
+    width: 0.7rem;
+    height: 0.7rem;
+    background-image: url(../pic/52a429fc4ff8461f0254617f7080b97c.png);
+    background-repeat: no-repeat;
+    background-size: 40% 40%;
+    position: absolute;
+    background-position: center;
+    content: '';
+    left: 0.1rem;
+}
+/*page3部分*/
+
+
+
+/*bottom*/
+.bottombox{
+    position: fixed;
+    bottom: 0;
+    height: 1rem;
+    width: 100%;
+    display: flex;
+    background-color: #fff;
+}
+.bottombox >div{
+    flex-grow: 1;
+    text-align: center;
+    color: #666;
+    font-size: 0.2rem;
+    margin-top: 0.25rem;
+}
+.bottombox span{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 0.3rem;
+    height: 0.3rem;
+    display: inline-block;
+}
+.bottomlogo1{
+    background-image: url(../pic/0f5cc9cda711e8a051e0e173fc9e2635.png);
+}
+.bottomlogo2{
+    background-image: url(../pic/3c1b05b3bd159d25201ad032f4ae4f76.png);
+}
+.bottomlogo3{
+    background-image: url(../pic/e66ec0c2f4c64fb59db2b2fb5e6ec4b2.png);
+}
+.bottomlogo1select{
+    background-image: url(../pic/f98712ec02518c95432b6b6b5c51a87f.png);
+}
+.bottomlogo2select{
+    background-image: url(../pic/515a9757aadbc426336058ab83b4d492.png);
+}
+.bottomlogo3select{
+    background-image: url(../pic/8b74b26b4338993383d1b41ee3107bad.png);
+}

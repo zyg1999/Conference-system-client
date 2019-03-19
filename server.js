@@ -4,4 +4,4 @@ var static = require('express-static');
 var server = express();
 server.use(static('./dist'));
 
-server.listen(8878);
+server.listen(8888);
