@@ -1,4 +1,4 @@
-* {
+  * {
     margin: 0;
     padding: 0;
   }
@@ -224,7 +224,7 @@ body{
     content: '';
     position: absolute;
     left: -0.1rem;
-    top: 0.05rem;
+    top: 0.03rem;
 }
 .hot::before{
     background-image: url(../pic/e796ac0abdd9d06a9bd6183933910969.png);
@@ -260,7 +260,8 @@ body{
     width: 4.5rem;
     margin-left: 0.2rem;
     font-size: 0.22rem;
-    line-height: 0.38rem;
+    line-height: 0.3rem;
+    margin-top: 0.1rem;
 }
 .part3 .details span{
     width: 1.45rem;
@@ -338,6 +339,8 @@ body{
     width: 100%;
     background-color: #08B9FD;
     color: #fff;
+    position:fixed;
+    z-index: 2;
 }
 .myrecordtittle{
     text-align: center;
@@ -383,17 +386,35 @@ body{
 .righttext{
     float: right;
 }
+.page2body{
+    position: absolute;
+    top: 3rem;
+    left: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    bottom: 1rem;
+}
+.page2body::-webkit-scrollbar {
+    display: none;
+}
+.page2innerbody{
+    position: relative;
+    overflow: hidden;
+}
 .year{
     background-color: #F8F8F8;
     position: relative;
     padding-left: 0.8rem;
-    height: 0.7rem;
-    line-height: 0.7rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
     color: #666;
+    border-top: 1.3px solid rgba(226, 226, 226, 0.856);
+    border-bottom: 1.3px solid rgba(226, 226, 226, 0.856);
 }
 .year::before{
-    width: 0.7rem;
-    height: 0.7rem;
+    width: 0.6rem;
+    height: 0.6rem;
     background-image: url(../pic/52a429fc4ff8461f0254617f7080b97c.png);
     background-repeat: no-repeat;
     background-size: 40% 40%;
@@ -402,8 +423,188 @@ body{
     content: '';
     left: 0.1rem;
 }
+.ratetittle{
+    position: relative;
+    height: 0.7rem;
+    line-height: 0.7rem;
+    border-bottom: 1.3px solid #F7F7F7;
+}
+.rate{
+    font-size: 0.3rem;
+    color: #000;
+    text-shadow: 0px 0px  #000;
+    position: absolute;
+    float: left;
+    left: 0.1rem;
+}
+.switch{
+    font-size: 0.25rem;
+    color: rgb(121, 121, 121);
+    position: absolute;
+    float: right;
+    right: 0.1rem;
+}
+.articlegrey{
+    height: .3rem;
+    background-color: #F8F8F8;
+    border-top: 1.3px solid rgba(226, 226, 226, 0.856);
+    border-bottom: 1.3px solid rgba(226, 226, 226, 0.856);
+}
+.articlegrey2{
+    height: .2rem;
+    background-color: #F8F8F8;
+    border-top: 1.3px solid rgba(226, 226, 226, 0.856);
+    border-bottom: 1.3px solid rgba(226, 226, 226, 0.856);
+}
+.attenddetail{
+    height: 0.6rem;
+    font-size: 0.25rem;
+    line-height: 0.65rem;
+    padding-left: 0.7rem;
+    text-shadow: .5px 0px #000;
+}
+.attenddetail::before{
+    width: 0.6rem;
+    height: 0.6rem;
+    background-image: url(../pic/1c239055d03585b98700f7bf89cbcaf8.png);
+    background-repeat: no-repeat;
+    background-size: 60% 60%;
+    content: '';
+    position: absolute;
+    left: 0rem;
+    background-position: center;
+    margin-left: 0.1rem;
+}
+.statedetails{
+    height: 0.5rem;
+    font-size: 0.25rem;
+    line-height: 0.5rem;
+    padding: 0 0.15rem;
+    text-shadow: .5px 0px #000;
+}
+.statedetails::before{
+    height: 0.45rem;
+    font-size: 0.2rem;
+    line-height: 0.45rem;
+    color: #666;
+    position: absolute;
+    float: right;
+    right: 0.1rem;
+}
+.absenteeism::before{
+    content: '10次 >'
+}
+.askflv::before{
+    content: '10次 >';
+}
+.late::before{
+    content: '10次 >';
+}
+.normal::before{
+    content: '10次 >';
+}
 /*page3部分*/
-
+.page3{
+    background-color: #F8F8F8;
+    overflow: hidden;
+}
+.page3topbox{
+    height: 3rem;
+    width: 100%;
+    background-image: url(../pic/e081fbe9d3444d30204b3e2cb05d2d09.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-top: 2rem;
+    
+}
+.page3headpic{
+    height: 1.3rem;
+    width: 1.3rem;
+    background-image: url(../pic/dd2fc9bde5e974ce3a6a7ea7a1afff52.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    border-radius: 100px 100px;
+    margin:0 auto;
+}
+.page3topbox p{
+    text-align: center;
+    color: #666;
+    line-height: 0.35rem;
+}
+#page3name{
+    font-size: 0.3rem;
+    line-height: 0.5rem;
+    color: #000;
+    box-shadow: .8px 0px #000;
+    position: relative;
+}
+.certification{
+    padding-right: 0.1rem;
+}
+.certification::after{
+    width: 0.55rem;
+    height: 0.27rem;
+    content: '';
+    background-image: url(../pic/7f282212c0c13ce8820b692359a19338.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute ;
+    right: 2.2rem;
+    margin: 0.02rem;
+}
+.page3bodybox{
+    width: 100%;
+    margin: 2rem 0 3rem 0;
+}
+.page3bodybox>p{
+    height: 0.6rem;
+    width: 100%;
+    font-size: 0.3rem;
+    text-shadow: .5px 0 #000;
+    position: relative;
+    margin: 0.1rem 0;
+    display: inline-block;
+    text-align: left;
+    padding-left: 0.7rem;
+    background-color: #fff;
+    line-height: 0.6rem;
+    /* padding:  0.1rem 0 0.1rem 0.7rem; */
+}
+.page3bodybox p::before{
+    height: 0.35rem;
+    width: 0.35rem;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    position: absolute;
+    left: 0.2rem;
+    content: '';
+    margin: 0.125rem 0;
+}
+.page3bodybox p::after{
+    height: 0.35rem;
+    width: 0.35rem;
+    content: '';
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    position: absolute;
+    right: 0.2rem;
+    margin: 0.125rem 0;
+    background-image: url(../pic/60147cd115d45f12716f103dc87d451e.png);
+}
+.myupload::before{
+    background-image: url(../pic/1ecc7549b3abf76a9372573e9c8462f1.png);
+}
+.meetingset::before{
+    background-image: url(../pic/15afd0ba65f45803df3e83fdeee8d142.png);
+}
+.allset::before{
+    background-image: url(../pic/b449a9725140deef67fd36dc36c746f6.png);
+}
+.about::before{
+    background-image: url(../pic/64d23bf481afdae4da3ebfac4a35db4c.png);
+}
 
 
 /*bottom*/
@@ -414,13 +615,14 @@ body{
     width: 100%;
     display: flex;
     background-color: #fff;
+    z-index: 2;
 }
 .bottombox >div{
     flex-grow: 1;
     text-align: center;
     color: #666;
     font-size: 0.2rem;
-    margin-top: 0.25rem;
+    padding-top: 0.25rem;
 }
 .bottombox span{
     background-size: 100% 100%;

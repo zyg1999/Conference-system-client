@@ -1,6 +1,5 @@
 (function (doc, win) {
     var docEl = doc.documentElement,
-        resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
         recalc = function () {
             var clientWidth = docEl.clientWidth;
             if (!clientWidth) return;
@@ -11,8 +10,8 @@
             }
         };
     if (!doc.addEventListener) return;
-    win.addEventListener(resizeEvt, recalc, false);
-    doc.addEventListener('DOMContentLoaded', recalc, false);
+   /*  win.addEventListener(resizeEvt, recalc, false);*/
+    doc.addEventListener('DOMContentLoaded', recalc, false); 
 })(document, window);
 window.addEventListener(
     "touchmove",

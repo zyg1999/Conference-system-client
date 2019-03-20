@@ -4,7 +4,7 @@ ajax({
     type: 'get',   //请求方式
     data: { name: 'zhangsan', age: '23', email: '2372734044@qq.com' }, //请求json参数
     async: false,   //是否异步
-    success: function (responseText) {
+    success: function (xhr) {
         //   此处执行请求成功后的代码
     },
     fail: function (err) {
