@@ -1,9 +1,8 @@
 import '../style/reset.css';
 import '../style/login.css';
 require('./init.js');
-
 var ajax = require('./public_Ajax.js').ajax;
-
+let ajaxflag=1;
 let eye = document.getElementsByClassName('eye')[0];
 let inputs = document.getElementsByTagName('input');
 let loginbnt = document.getElementsByClassName('loginBotton')[0];
@@ -36,10 +35,6 @@ inputs[1].onfocus = function () {
 inputs[2].onfocus = function () {
     wrongtips.innerHTML = '';
 };
-inputs[1].onblur = function () {  
-    inputs[1].value = '';
-    del.style='display:none;';
-};
 
 del.addEventListener('click', function () {
     inputs[1].value = '';
@@ -55,30 +50,43 @@ loginbnt.addEventListener('click', function () {
         let useraccount={};
         useraccount.phone=inputs[1].value;
         useraccount.password=inputs[2].value;
-         ajax({
-            url:'http://www.shidongxuan.top/smartMeeting_Web/user/login.do',
-            type:'post',
-            data:useraccount,
-            async: false,
-            success: function (xhr) {
-                let res = JSON.parse(xhr.responseText);
-                if(res.status==0){//登陆成功时获取token
-                    let token = res.msg;
-                    if(token!=null){
-                        localStorage.setItem('token',token);//保存token
-                        window.location.href='功能页面url';
+        if(ajaxflag==0){
+            wrongtips.innerHTML = '不能多次发送';
+            return;
+        }else{
+            ajaxflag=0;
+            ajax({
+                url:'http://www.shidongxuan.top/smartMeeting_Web/user/login.do',
+                type:'post',
+                data:useraccount,
+                async: false,
+                success: function (xhr) {
+                    ajaxflag=1;
+                    let res = JSON.parse(xhr.responseText);
+                    if(res.status==0){//登陆成功时获取token
+                        let token = res.msg;
+                        if(token!=null){
+                            localStorage.setItem('token',token);//保存token
+                            localStorage.setItem('id',res.data.id);//保存id
+                            localStorage.setItem('phone',res.data.phone);//保存用户手机号
+                            window.location.href='http://localhost:8888/user_index.html'; 
+                        }else{
+                            wrongtips.innerHTML='登录失败';
+                        }
                     }else{
-                        wrongtips.innerHTML='登录失败';
-                    }
-                }else{
-                    wrongtips.innerHTML='账户名或密码错误';
-                } 
-            },
-            fail: function (err) {                                                                                                          
-                console.log('通信错误');
-                window.location.href='登录页面';
-            }
-        }) 
-        
+                        wrongtips.innerHTML='账户名或密码错误';
+                    } 
+                },
+                fail: function (err) {   
+                    ajaxflag=1;
+                    wrongtips.innerHTML='通信错误';                                                                                                       
+                    window.location.href='http://localhost:8888/login.html';
+                }
+            }) 
+        }       
     }
+})
+let forget = document.getElementsByClassName('forget')[0];
+forget.addEventListener('click',function(){
+    window.location.href='http://localhost:8888/findpswd.html';
 })

@@ -1,4 +1,4 @@
-* {
+  * {
     margin: 0;
     padding: 0;
   }
@@ -157,9 +157,7 @@ input::-webkit-input-placeholder {
     background-size:100%;
     background-image: url(../pic/eb7d57676381aed95d133deaeef3e4c4.png);
 }
-/* #clear{
-    background-image: url(../pic/qingchu.png);
-} */
+
 .phone,.pswd{
     border-radius: 4px;
 }

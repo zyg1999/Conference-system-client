@@ -1,4 +1,4 @@
-* {
+  * {
     margin: 0;
     padding: 0;
   }
@@ -59,6 +59,16 @@
 body{
     width: 100%;
     overflow: hidden;
+}
+.returninco{
+    float: left;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-image: url(../pic/843786e1615e9cfa1a600211d15e787d.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    margin:0.1rem;
 }
 .tittle{
     width: 100%;
@@ -155,4 +165,16 @@ input:focus {
     padding: 0 0.2rem;
     display: inline-block;
     float: right;  
+}
+.confirmchange{
+    height: 0.8rem;
+    width: 3.5rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0px 0px #fff;
+    font-size: 0.3rem;
+    line-height: 0.8rem;
+    background-color: rgb(81, 119, 235);
+    margin: 0.45rem auto;
+    border-radius: 100px;
 }

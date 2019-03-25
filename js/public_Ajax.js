@@ -1,7 +1,8 @@
 /*
 ajax({
     url: "", //请求地址
-    type: 'get',   //请求方式
+	type: 'get',   //请求方式
+	contenttype:form,urlencode;
     data: { name: 'zhangsan', age: '23', email: '2372734044@qq.com' }, //请求json参数
     async: false,   //是否异步
     success: function (xhr) {
@@ -33,13 +34,16 @@ exports.ajax = function Ajax(object) {
 		xhr.open("post", object.url, object.async);
 		if(object.token){
 			let token = localStorage.getItem('token');
-			xhr.setRequestHeader('Authorization',token);
-		}else{
+			xhr.setRequestHeader('token',token);	
+		}
+		if(object.contenttype=='form'){
+			xhr.setRequestHeader("Content-Type", "multipart/form-data");
+		}
+		else{
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		}
 		xhr.send(message);
 	}
-
 	function getParmer(data) {
 		var arr = [];
 		for (var thing in data) {
@@ -47,4 +51,5 @@ exports.ajax = function Ajax(object) {
 		}
 		return arr.join('&');
 	}
+	
 }
