@@ -9,12 +9,15 @@
     <script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.7/f2.min.js"></script>
     <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js"></script>
     <script src="https://gw.alipayobjects.com/os/rmsportal/NjNldKHIVQRozfbAOJUW.js"></script>
+  <!--   <script src="../dist/jquery-1.9.1.min.js"></script>
+    <script src="../dist/calendar-jquery.min.js"></script> -->
 </head>
 
 <body>
-    <div class="warp" style="display:none;">
+    <div class="warp" style="display:block;">
         <div class="pagebox">
             <div class="page1" style="display:block;">
+                
                 <div class="page1top">
                     <span class="mymeetingtop">我的</span>&nbsp;&nbsp;&nbsp;
                     <span class="meetingroomtop topselect">会议室</span>&nbsp;&nbsp;&nbsp;
@@ -25,50 +28,22 @@
                     <span class="triangle"></span>
                     <p class="reservation">预定会议室</p>
                 </div>
+                <div class="reservationbigbox">
+                    <span class="fork"></span>
+                    <input type="text"  class="meetingroomid" placeholder="请输入会议室id名"/>
+                    <input type="text"  class="meetingname" placeholder="会议名称">
+                    <input type="text"  class="meetingname" placeholder="会议简介">
+                    <input type="text"  class="reservationstart" placeholder="起始时间 格式：2019/03/27 08:00:00"/>
+                    <input type="text"  class="reservationend" placeholder="结束时间 格式：2019/03/27 08:00:00"/>
+                    <p class="determine">确&nbsp;&nbsp;&nbsp;&nbsp;定</p> 
+                    <p class="usertips"></p>
+                </div>
                 <div class="partbox" >
                     <div class="part1" style="display:none;">
-                        <div class="item">
-                            <span class="meetingtittle">会议名称</span>
-                            <span class="meetingstatus">正在进行</span>
-                            <div class="more "></div>
-                            <div class="details">
-                                <span class="people pic1">20人</span>
-                                <span class="myself pic1">张银鸽</span>
-                            </div>
-                            <div class="details">
-                                <span class="adress pic1">FZ155</span>
-                                <span class="meettime pic1">90分钟</span>
-                            </div>
-                            <div class="details">
-                                <span class="sumtime pic1">2019-03-24 19:30:00-2019-03-24 20:00:00</span>
-                            </div>
-                        </div>
                     </div>
                     <div class="part2" style="display:block;">
                     </div>
                     <div class="part3" style="display:none;">
-                        <div class="item">
-                            <span style="display:line-block; font-size:0.28rem;">便捷会议</span>
-                            <span class="mtrole">组织者</span>
-                            <div class="details">
-                                <span class="people pic3">20人</span>
-                                <span class="take pic3">正常</span>
-                            </div>
-                            <div class="details">
-                                <span class="adress pic3">FZ155</span>
-                                <span class="meettime pic3">90分钟</span>
-                            </div>
-                            <div class="details">
-                                <span class="myself pic3">易烊千玺</span>
-                                <span class="today pic3">2018年3月20日</span>
-                            </div>
-                            <div class="details">
-                                <span class="sumtime pic3">19:30:00-20:00:00</span>
-                            </div>
-                            <div class="details">
-                                <span class="summary pic3">关于纳新的会议</span>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -79,7 +54,7 @@
                         <span class="page2headpic"></span>
                         <div class="detilestextbox">
                             <div class="textline1">
-                                <span class="lefttext">易烊千玺</span>
+                                <span class="lefttext page2name"></span>
                                 <span class="righttext">正常参与/所有会议</span>
                             </div>
                             <div class="textline2">
@@ -92,7 +67,7 @@
                 </div>
                 <div class="page2body" >
                     <div class="page2innerbody">
-                        <div class="year">2019年</div>
+                        <div class="year"></div>
                         <div class="attendrate">
                             <div class="ratetittle">
                                 <span class="rate">出勤占比图</span>
@@ -110,6 +85,7 @@
                             <div class="askflv statedetails">请假</div>
                             <div class="late statedetails">迟到</div>
                             <div class="normal statedetails">正常</div>
+
                         </div>
                        
                     </div>
@@ -119,8 +95,8 @@
                 <div class="page3topbox">
                     <div class="page3headpic"></div>
                     <div class="page3briefmsg">
-                        <p id="page3name">易烊千玺</p>
-                        <p class="page3email">邮箱：364846657@qq.com</p>
+                        <p id="page3name"></p>
+                        <p class="page3email"></p>
                         <p class="certification">企业认证</p>
                     </div>
                     <span class="moreinfoicon"></span>
@@ -149,7 +125,7 @@
             </div>
         </div>
     </div>
-    <div class="infomodifica">
+    <div class="infomodifica" style="display:none;">
         <div class="infomodificatop">
             <span class="returnlastpage"></span>
             <span class="infomodiftittle">我的资料</span>
@@ -157,17 +133,17 @@
         </div>
         <div class="modfheadpicbox">
             <div class="modfheadpic"></div>
-            <div class="clicktochange">点击更换</div>
+        <!--     <div class="clicktochange">点击更换</div> -->
         </div>
         <div class="infomodfdetails">
             <div class="modfnamebox">
                 <span>姓名</span>
-                <span class="modfname">张银鸽</span>  
+                <span class="modfname"></span>  
             </div>
             <div class="modfsexbox">
                 <span style="vertical-align: middle;">性别</span>
                 <div class="man">
-                    <span class="circle"><span class=" circleselect"></span></span>
+                    <span class="circle"><span></span></span>
                     <span style="vertical-align: middle;">男</span>
                 </div>
                 <div class="woman">
@@ -177,15 +153,14 @@
             </div>
             <div class="modfphonebox">
                 <span>手机</span>
-                <input type="text" value="18329968200" class="modfphone" maxlength='11' autocomplete="off" onkeyup="value=value.replace(/[^\d]/g,'')" ng-pattern="/[^a-zA-Z]/">
+                <input type="text"  class="modfphone" maxlength='11' autocomplete="off" onkeyup="value=value.replace(/[^\d]/g,'')" ng-pattern="/[^a-zA-Z]/">
             </div>
             <div class="modfmailbox">
                 <span>邮箱</span>
-                <input type="text" value="364846657@qq.com" class="emailinput"/>
+                <input type="text"  class="emailinput"/>
             </div>
         </div>
         <p class="wrongtips" style="color:red;font-size:0.2rem;text-align: center"></p>
     </div>
 </body>
-
 </html>
