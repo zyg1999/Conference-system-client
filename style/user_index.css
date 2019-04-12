@@ -57,17 +57,146 @@ body{
 .reservationbigbox{
     width: 100%;
     height: 100%;
-    background-color: rgba(36, 35, 35, 0.623);;
+    background-color: rgba(36, 35, 35, 0.623);
     z-index: 5;
     position: absolute;
     display: none;
     padding: 0.6rem 0;
 }
+.meetingdetailspage{
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    position: absolute;
+    display: none;
+}
+.meetingdetailstop{
+    width: 100%;
+    height: .7rem;
+    background: linear-gradient(to right,#3C6EE4,#10AAF6);
+    display: flex;
+}
+
+.meetingdetailsbody{
+    height: calc(100vh - .7rem);
+    background-image: url(../pic/meetingdetailspage_bg.png);
+    background-size: 100% 100%;
+    padding-top: .2rem;
+}
+.timeandadress{
+    background-color: rgba(36, 35, 35, 0.623);
+    height: 2rem;
+    width: 80%;
+    margin: .2rem 10%;
+    border-radius: .2rem;
+    text-align: center;
+    padding-top:0.1rem;
+}
+.timeandadress>p{
+    line-height: 0.6rem;
+}
+.meetingdetailsbodycon{
+    color: #fff;
+    font-size: 0.25rem;
+    height: 99%;
+    overflow: scroll;
+    position: relative;
+}
+.introductioncontext{
+    background-color: rgba(36, 35, 35, 0.623);
+    height: .8rem;
+    width: 80%;
+    margin: .2rem 10%;
+    border-radius: .2rem;
+    text-align: center;
+    line-height: .8rem;
+    text-overflow: ellipsis;
+}
+.metdetilsreturn{
+    height: .6rem;
+    width: .6rem;
+    background-image: url(../pic/title_return.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: .05rem;
+}
+.notestext{
+    height: 1rem;
+    width: 80%;
+    margin: .2rem 10%;
+    border-radius: .2rem;
+    text-align: center;
+    background-color: rgba(36, 35, 35, 0.623);
+    line-height: 1rem;
+    text-overflow: ellipsis;
+    outline: 0;
+    color: #fff;
+}
+.meetingfile{
+    height: .5rem;
+    width: 80%;
+    margin: .2rem 10%;
+    padding: 0 .2rem;
+    border-radius: .2rem;
+    background-color: rgba(36, 35, 35, 0.623);
+    line-height: .5rem;
+    position: relative;
+}
+.meetingfile::after{
+    width: 0.55rem;
+    height: 0.27rem;
+    content: '';
+    background-image: url(../pic/icon_right.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute ;
+    right: .07rem;
+    top: .1rem;
+}
+.meetingdetilname{
+    font-size: .3rem;
+    line-height: .8rem;
+    flex: 1;
+    color: #fff;
+    text-align: center;
+    text-shadow: 0 0 #fff;
+}
+.addpeople{
+    color: #3C6EE4;
+    float: right;
+    padding-right: .3rem;
+}
+.meetingnotessave{
+    font-size: .3rem;
+    line-height: .8rem;
+    text-align: right;
+    color: #fff;
+    padding-right: .1rem;
+}
+.attendancepeosum{
+    text-align: right;
+    font-size: 0.5rem;
+    color: #fff;
+    padding-right: 0.3rem;
+}
+.peoplelist{
+    width: 80%;
+    margin: .2rem 10%;
+    padding: 0 .2rem;
+    border-radius: .2rem;
+    line-height: .5rem;
+    background-color: rgba(36, 35, 35, 0.623);
+}
+.meetingnowstatus{
+    text-align: right;
+    padding-right: 0.3rem;
+}
 .reservationbigbox>input{
     width: 70%;
     height: 0.5rem;
     border-radius: 10px;
-    margin: 0.2rem 17.5%;
+    margin: 0.2rem 15%;
 }
 .reservationbigbox>input::-webkit-input-placeholder{
     font-size: 0.15rem;
@@ -97,7 +226,7 @@ body{
     text-shadow:  0 0 #fff;
     text-align: center;
     font-size: .3rem;
-    margin: 0.1rem 17.5%;
+    margin: 0.1rem 15%;
     border-radius: 100px;
 }
 /*part1部分*/
@@ -192,7 +321,6 @@ body{
     height: 0.3rem;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    margin: 0.1rem auto 0.05rem;
     vertical-align: middle;
     padding-left: 0.24rem;
 }
@@ -238,7 +366,18 @@ body{
     top: 0.3rem;
     line-height: 0.5rem;
 }
-
+.reservationbtn{
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 100px;
+    background-color: #669900;
+    color: #fff;
+    font-size: 0.3rem;
+    text-align: center;
+    line-height: 0.55rem;
+    display: inline-block;
+    float: right;
+}
 /*part3部分*/
 .part3 .item{
     padding: 0.25rem 0.3rem;

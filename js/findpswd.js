@@ -2,11 +2,11 @@ import '../style/reset.css';
 import '../style/findpswd.css';
 
 require('./init.js');
-
+let url = 'http://localhost:8888/';//'http://192.168.137.1:8888/'
 var ajax = require('./public_Ajax.js').ajax;
 let returninco = document.getElementsByClassName('returninco')[0];
 returninco.addEventListener('click',function(){
-    window.location.href='http://192.168.137.1::8888/login.html';
+    window.location.href= url+'login.html';
 });
 let del = document.getElementsByClassName('del')[0];
 let inputs = document.getElementsByTagName('input');

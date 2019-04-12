@@ -33,7 +33,7 @@ exports.ajax = function Ajax(object) {
 	} else if (object.type == 'post') {
 		xhr.open("post", object.url, object.async);
 		if(object.token){
-			let token = localStorage.getItem('token');
+			let token = sessionStorage.getItem('token');
 			xhr.setRequestHeader('token',token);	
 		}
 		if(object.contenttype=='form'){

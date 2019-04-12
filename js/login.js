@@ -8,6 +8,7 @@ let inputs = document.getElementsByTagName('input');
 let loginbnt = document.getElementsByClassName('loginBotton')[0];
 let del = document.getElementsByClassName('del')[0];
 let wrongtips = document.getElementsByClassName('wrongtips')[0];
+let url = 'http://localhost:8888/';//'http://192.168.137.1:8888/'
 
 let height = window.screen.height;
 let warp=document.getElementsByClassName('warp')[0];
@@ -60,16 +61,17 @@ loginbnt.addEventListener('click', function () {
                 type:'post',
                 data:useraccount,
                 async: false,
+                contenttype:'urlencode',
                 success: function (xhr) {
                     ajaxflag=1;
                     let res = JSON.parse(xhr.responseText);
                     if(res.status==0){//登陆成功时获取token
                         let token = res.msg;
                         if(token!=null){
-                            localStorage.setItem('token',token);//保存token
-                            localStorage.setItem('id',res.data.id);//保存id
-                            localStorage.setItem('phone',res.data.phone);//保存用户手机号
-                            window.location.href='http://192.168.137.1:8888/user_index.html'; 
+                            sessionStorage.setItem('token',token);//保存token
+                            sessionStorage.setItem('id',res.data.id);//保存id
+                            sessionStorage.setItem('phone',res.data.phone);//保存用户手机号
+                            window.location.href=url+'user_index.html'; 
                         }else{
                             wrongtips.innerHTML='登录失败';
                         }
@@ -80,7 +82,7 @@ loginbnt.addEventListener('click', function () {
                 fail: function (err) {   
                     ajaxflag=1;
                     wrongtips.innerHTML='通信错误';                                                                                                       
-                    window.location.href='http://192.168.137.1:8888/login.html';
+                    window.location.href=url+'login.html';
                 }
             }) 
         }       
@@ -88,5 +90,5 @@ loginbnt.addEventListener('click', function () {
 })
 let forget = document.getElementsByClassName('forget')[0];
 forget.addEventListener('click',function(){
-    window.location.href='http://192.168.137.1:8888/findpswd.html';
+    window.location.href=url+'findpswd.html';
 })
