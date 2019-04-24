@@ -1,49 +1,62 @@
-html{
+html {
     width: 100%;
     height: 100%;
 }
-body{
+
+body {
     width: 100%;
     height: 100%;
 }
-.warp{
+
+.warp {
     width: 100%;
 }
 
+
 /*page1顶部导航栏*/
-.page1top{
+
+.page1top {
     height: 0.8rem;
     width: 100%;
-    background: linear-gradient(to right,#3C6EE4,#10AAF6);
-    color:#fff;
+    background: linear-gradient(to right, #3C6EE4, #10AAF6);
+    color: #fff;
     font-size: 0.28rem;
     text-align: center;
     line-height: 0.8rem;
     position: fixed;
     z-index: 2;
 }
-.topselect{
+
+.topselect {
     font-size: 0.32rem;
     text-shadow: 0px 0px #fff;
 }
-.add{
+
+.add {
     float: right;
     position: absolute;
     right: 0.15rem;
     font-size: 0.6rem;
 }
+
+
 /*滚动条隐藏滚动*/
-.partbox>div,.partbox{
+
+.partbox>div,
+.partbox {
     width: 100%;
 }
+
 .partbox>div {
     position: relative;
-    overflow: hidden;  
+    overflow: hidden;
 }
+
 .partbox::-webkit-scrollbar {
     display: none;
 }
-.partbox{
+
+.partbox {
     position: absolute;
     top: 0.8rem;
     left: 0;
@@ -54,7 +67,8 @@ body{
     width: 100%;
     bottom: 1rem;
 }
-.reservationbigbox{
+
+.reservationbigbox {
     width: 100%;
     height: 100%;
     background-color: rgba(36, 35, 35, 0.623);
@@ -63,47 +77,55 @@ body{
     display: none;
     padding: 0.6rem 0;
 }
-.meetingdetailspage{
+
+.meetingdetailspage {
     width: 100%;
     height: 100%;
     z-index: 5;
     position: absolute;
     display: none;
 }
-.meetingdetailstop{
+
+.meetingdetailstop {
     width: 100%;
     height: .7rem;
-    background: linear-gradient(to right,#3C6EE4,#10AAF6);
+    background: linear-gradient(to right, #3C6EE4, #10AAF6);
     display: flex;
 }
 
-.meetingdetailsbody{
+.meetingdetailsbody {
     height: calc(100vh - .7rem);
-    background-image: url(../pic/meetingdetailspage_bg.png);
+    /* background-image: url(../pic/meetingdetailspage_bg.png); */
     background-size: 100% 100%;
     padding-top: .2rem;
+    background-color: #ededed;
 }
-.timeandadress{
-    background-color: rgba(36, 35, 35, 0.623);
+
+.timeandadress {
+    background-color: #fff;
     height: 2rem;
     width: 80%;
     margin: .2rem 10%;
     border-radius: .2rem;
     text-align: center;
-    padding-top:0.1rem;
+    padding-top: 0.1rem;
+    box-shadow: 2px 2px 5px #a3a1a1;
 }
-.timeandadress>p{
+
+.timeandadress>p {
     line-height: 0.6rem;
 }
-.meetingdetailsbodycon{
-    color: #fff;
+
+.meetingdetailsbodycon {
+    color: #333;
     font-size: 0.25rem;
     height: 99%;
     overflow: scroll;
     position: relative;
 }
-.introductioncontext{
-    background-color: rgba(36, 35, 35, 0.623);
+
+.introductioncontext {
+    background-color: #fff;
     height: .8rem;
     width: 80%;
     margin: .2rem 10%;
@@ -111,8 +133,10 @@ body{
     text-align: center;
     line-height: .8rem;
     text-overflow: ellipsis;
+    box-shadow: 2px 2px 5px #a3a1a1;
 }
-.metdetilsreturn{
+
+.metdetilsreturn {
     height: .6rem;
     width: .6rem;
     background-image: url(../pic/title_return.png);
@@ -121,19 +145,21 @@ body{
     background-position: center;
     margin: .05rem;
 }
-.notestext{
+
+.notestext {
     height: 1rem;
     width: 80%;
     margin: .2rem 10%;
     border-radius: .2rem;
     text-align: center;
-    background-color: rgba(36, 35, 35, 0.623);
     line-height: 1rem;
     text-overflow: ellipsis;
     outline: 0;
-    color: #fff;
+    color: #333;
+    box-shadow: 2px 2px 5px #a3a1a1;
 }
-.meetingfile{
+
+.meetingfile {
     height: .5rem;
     width: 80%;
     margin: .2rem 10%;
@@ -143,18 +169,20 @@ body{
     line-height: .5rem;
     position: relative;
 }
-.meetingfile::after{
+
+.meetingfile::after {
     width: 0.55rem;
     height: 0.27rem;
     content: '';
     background-image: url(../pic/icon_right.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    position: absolute ;
+    position: absolute;
     right: .07rem;
     top: .1rem;
 }
-.meetingdetilname{
+
+.meetingdetilname {
     font-size: .3rem;
     line-height: .8rem;
     flex: 1;
@@ -162,52 +190,61 @@ body{
     text-align: center;
     text-shadow: 0 0 #fff;
 }
-.addpeople{
+
+.addpeople {
     color: #3C6EE4;
     float: right;
     padding-right: .3rem;
 }
-.meetingnotessave{
+
+.meetingnotessave {
     font-size: .3rem;
     line-height: .8rem;
     text-align: right;
     color: #fff;
     padding-right: .1rem;
 }
-.attendancepeosum{
+
+.attendancepeosum {
     text-align: right;
     font-size: 0.5rem;
-    color: #fff;
     padding-right: 0.3rem;
 }
-.peoplelist{
+
+.peoplelist {
     width: 80%;
     margin: .2rem 10%;
     padding: 0 .2rem;
     border-radius: .2rem;
     line-height: .5rem;
-    background-color: rgba(36, 35, 35, 0.623);
+    background-color: #fff;
+    box-shadow: 2px 2px 5px #a3a1a1;
 }
-.meetingnowstatus{
+
+.meetingnowstatus {
     text-align: right;
     padding-right: 0.3rem;
 }
-.reservationbigbox>input{
+
+.reservationbigbox>input {
     width: 70%;
     height: 0.5rem;
     border-radius: 10px;
     margin: 0.2rem 15%;
 }
-.reservationbigbox>input::-webkit-input-placeholder{
+
+.reservationbigbox>input::-webkit-input-placeholder {
     font-size: 0.15rem;
 }
-.usertips{
-    color:#fff;
-    font-size:0.3rem;
-    text-align:center;
+
+.usertips {
+    color: #fff;
+    font-size: 0.3rem;
+    text-align: center;
     margin-top: 0.1rem;
 }
-.fork{
+
+.fork {
     width: 0.4rem;
     height: 0.4rem;
     background-image: url(../pic/quxiao2.png);
@@ -217,40 +254,48 @@ body{
     margin-right: 0.3rem;
     margin-top: 0.3rem;
 }
-.determine{
+
+.determine {
     width: 70%;
     height: .7rem;
     line-height: .7rem;
     background-color: #3C6EE4;
-    color:#fff;
-    text-shadow:  0 0 #fff;
+    color: #fff;
+    text-shadow: 0 0 #fff;
     text-align: center;
     font-size: .3rem;
     margin: 0.1rem 15%;
     border-radius: 100px;
 }
+
+
 /*part1部分*/
-.part1 .details{
+
+.part1 .details {
     width: 4.5rem;
     margin-left: 0.2rem;
     font-size: 0.22rem;
     line-height: 0.38rem;
     margin-top: 0.1rem;
 }
-.itemtittle{
+
+.itemtittle {
     margin-bottom: 0.1rem
 }
-.part1 .item{
+
+.part1 .item {
     padding: 0.25rem 0.3rem;
     background-color: #fff;
     margin: 0.2rem 0rem;
 }
-.meetingtittle{
+
+.meetingtittle {
     font-size: 0.28rem;
     line-height: 0.4rem;
     text-shadow: 0px 0px #666;
 }
-.meetingstatus{
+
+.meetingstatus {
     background-color: #04C756;
     color: #fff;
     padding: 0.01rem 0.15rem;
@@ -260,7 +305,8 @@ body{
     font-size: 0.2rem;
     line-height: 0.4rem;
 }
-.more{
+
+.more {
     background-image: url(../pic/item_more.png);
     width: 0.2rem;
     height: 0.2rem;
@@ -271,7 +317,8 @@ body{
     display: inline-block;
     float: right;
 }
-.part1 .details span{
+
+.part1 .details span {
     width: 1.45rem;
     position: relative;
     padding-left: 0.55rem;
@@ -280,7 +327,8 @@ body{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
-.pic1::before{
+
+.pic1::before {
     width: 0.3rem;
     height: 0.3rem;
     background-size: 100% 100%;
@@ -289,34 +337,42 @@ body{
     margin: 0.1rem auto 0.05rem;
     content: '';
     position: absolute;
-    left:0.1rem;
-    top:-0.045rem;
+    left: 0.1rem;
+    top: -0.045rem;
 }
-.people::before{
+
+.people::before {
     background-image: url(../pic/history_meeting_people_sum.png);
 }
-.myself::before{
+
+.myself::before {
     background-image: url(../pic/history_meeting_master.png);
 }
-.adress::before{
+
+.adress::before {
     background-image: url(../pic/history_meeting_place.png);
 }
-.meettime::before{
+
+.meettime::before {
     background-image: url(../pic/history_meeting_time_sum.png);
 }
-.sumtime::before{
+
+.sumtime::before {
     background-image: url(../pic/history_meeting_time.png);
 }
 
+
 /*part2部分*/
-.part2 .item{
+
+.part2 .item {
     padding: 0.25rem 0.3rem;
     background-color: #fff;
     margin: 0.2rem 0rem;
     overflow: hidden;
     position: relative;
 }
-.part2 span{
+
+.part2 span {
     width: 0.3rem;
     height: 0.3rem;
     background-size: 100% 100%;
@@ -325,7 +381,7 @@ body{
     padding-left: 0.24rem;
 }
 
- .part2 .details{
+.part2 .details {
     line-height: 0.35rem;
     font-size: 0.22rem;
     margin: 0.1rem;
@@ -333,7 +389,7 @@ body{
     position: relative;
 }
 
-.pic2::before{
+.pic2::before {
     width: 0.26rem;
     height: 0.26rem;
     background-size: 100% 100%;
@@ -344,16 +400,20 @@ body{
     left: -0.1rem;
     top: 0.03rem;
 }
-.hot::before{
+
+.hot::before {
     background-image: url(../pic/item_hot.png);
 }
-.time::before{
+
+.time::before {
     background-image: url(../pic/item_time.png);
 }
-.accommodate::before{
+
+.accommodate::before {
     background-image: url(../pic/item_sum.png);
 }
-.mtroomstatus{
+
+.mtroomstatus {
     position: absolute;
     font-size: 0.23rem;
     background-color: #669900;
@@ -366,7 +426,8 @@ body{
     top: 0.3rem;
     line-height: 0.5rem;
 }
-.reservationbtn{
+
+.reservationbtn {
     width: 0.55rem;
     height: 0.55rem;
     border-radius: 100px;
@@ -378,20 +439,25 @@ body{
     display: inline-block;
     float: right;
 }
+
+
 /*part3部分*/
-.part3 .item{
+
+.part3 .item {
     padding: 0.25rem 0.3rem;
     background-color: #fff;
     margin: 0.2rem 0rem;
 }
-.part3 .details{
+
+.part3 .details {
     width: 4.5rem;
     margin-left: 0.2rem;
     font-size: 0.22rem;
     line-height: 0.3rem;
     margin-top: 0.1rem;
 }
-.part3 .details span{
+
+.part3 .details span {
     width: 2rem;
     position: relative;
     padding-left: 0.55rem;
@@ -401,7 +467,7 @@ body{
     white-space: nowrap;
 }
 
-.pic3::before{
+.pic3::before {
     width: 0.3rem;
     height: 0.3rem;
     background-size: 100% 100%;
@@ -410,26 +476,30 @@ body{
     margin: 0.05rem auto 0.05rem;
     content: '';
     position: absolute;
-    left:0.1rem;
-    top:-0.045rem;
+    left: 0.1rem;
+    top: -0.045rem;
 }
 
-.take::before{
+.take::before {
     background-image: url(../pic/history_meeting_status.png);
 }
 
-.mtmaster::before{
+.mtmaster::before {
     background-image: url(../pic/history_meeting_time.png);
 }
-.today::before{
+
+.today::before {
     background-image: url(../pic/history_meeting_date.png)
 }
 
-.sumtime,.summary{
+.sumtime,
+.summary {
     width: 5.5rem !important;
     margin-top: 0.1rem;
 }
-.sumtime::before,.summary::before{
+
+.sumtime::before,
+.summary::before {
     width: 0.3rem;
     height: 0.3rem;
     background-size: 100% 100%;
@@ -438,17 +508,19 @@ body{
     margin: 0.05rem auto 0.05rem;
     content: '';
     position: absolute;
-    left:0.1rem;
-    top:-0.045rem;
+    left: 0.1rem;
+    top: -0.045rem;
 }
-.summary::before{
+
+.summary::before {
     background-image: url(../pic/history_meeting_content.png);
 }
-.sumtime::before{
+
+.sumtime::before {
     background-image: url(../pic/history_meeting_time_sum.png);
 }
 
-.mtrole{
+.mtrole {
     background-color: #3C6EE4;
     color: #fff;
     padding: 0.01rem 0.15rem;
@@ -459,25 +531,30 @@ body{
     line-height: 0.4rem;
 }
 
+
 /*page2部分*/
-.page2topbox{
+
+.page2topbox {
     height: 3rem;
     width: 100%;
     background-color: #08B9FD;
     color: #fff;
-    position:fixed;
+    position: fixed;
     z-index: 2;
 }
-.myrecordtittle{
+
+.myrecordtittle {
     text-align: center;
     font-size: 0.3rem;
     display: block;
-    padding:0.15rem;
+    padding: 0.15rem;
 }
-.mydetiles{
+
+.mydetiles {
     margin-top: 0.25rem;
 }
-.page2headpic{
+
+.page2headpic {
     height: 1.4rem;
     width: 1.4rem;
     background-image: url(../pic/user_default_icon.jpg);
@@ -486,33 +563,40 @@ body{
     border-radius: 100px;
     display: inline-block;
     float: left;
-    margin:0.12rem;
+    margin: 0.12rem;
 }
-.detilestextbox{
+
+.detilestextbox {
     height: 1.64rem;
     margin-left: 1.8rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
 }
-.detilestextbox > div{
+
+.detilestextbox>div {
     position: relative;
     width: 90%;
     margin: 0.05rem 0;
 }
-.textline1{
+
+.textline1 {
     font-size: 0.25rem;
 }
-.textline2{
+
+.textline2 {
     font-size: 0.2rem;
 }
-.lefttext{
+
+.lefttext {
     float: left;
 }
-.righttext{
+
+.righttext {
     float: right;
 }
-.page2body{
+
+.page2body {
     position: absolute;
     top: 3rem;
     left: 0;
@@ -522,14 +606,17 @@ body{
     bottom: 1rem;
     height: calc(100vh - 4rem);
 }
+
 .page2body::-webkit-scrollbar {
     display: none;
 }
-.page2innerbody{
+
+.page2innerbody {
     position: relative;
     overflow: hidden;
 }
-.year{
+
+.year {
     background-color: #F8F8F8;
     position: relative;
     padding-left: 0.8rem;
@@ -539,7 +626,8 @@ body{
     border-top: 1.3px solid rgba(226, 226, 226, 0.856);
     border-bottom: 1.3px solid rgba(226, 226, 226, 0.856);
 }
-.year::before{
+
+.year::before {
     width: 0.6rem;
     height: 0.6rem;
     background-image: url(../pic/history_meeting_date.png);
@@ -550,43 +638,50 @@ body{
     content: '';
     left: 0.1rem;
 }
-.ratetittle{
+
+.ratetittle {
     position: relative;
     height: 0.7rem;
     line-height: 0.7rem;
     border-bottom: 1.3px solid #F7F7F7;
 }
-.rate{
+
+.rate {
     font-size: 0.3rem;
     color: #000;
-    text-shadow: 0px 0px  #000;
+    text-shadow: 0px 0px #000;
     position: absolute;
     float: left;
     left: 0.1rem;
 }
-.switch{
+
+.switch {
     font-size: 0.25rem;
     color: rgb(121, 121, 121);
     position: absolute;
     float: right;
     right: 0.1rem;
 }
-.articlegrey{
+
+.articlegrey {
     height: .3rem;
     background-color: #F8F8F8;
     border-top: 1.3px solid rgba(226, 226, 226, 0.856);
     border-bottom: 1.3px solid rgba(226, 226, 226, 0.856);
 }
-.articlegrey2{
+
+.articlegrey2 {
     height: .2rem;
     background-color: #F8F8F8;
     border-top: 1.3px solid rgba(226, 226, 226, 0.856);
     border-bottom: 1.3px solid rgba(226, 226, 226, 0.856);
 }
-.attendrate{
+
+.attendrate {
     background-color: #fff;
 }
-.attenddetailtittle{
+
+.attenddetailtittle {
     height: 0.6rem;
     font-size: 0.25rem;
     line-height: 0.65rem;
@@ -594,7 +689,8 @@ body{
     text-shadow: .5px 0px #000;
     background-color: #fff;
 }
-.attenddetailtittle::before{
+
+.attenddetailtittle::before {
     width: 0.6rem;
     height: 0.6rem;
     background-image: url(../pic/icon_kind.png);
@@ -606,8 +702,9 @@ body{
     background-position: center;
     margin-left: 0.1rem;
 }
-.statedetails{
-    height: 0.6rem;
+
+.statedetails {
+    /*  height: 0.6rem; */
     font-size: 0.25rem;
     line-height: 0.6rem;
     padding: 0 0.175rem;
@@ -615,7 +712,8 @@ body{
     background-color: #fff;
     border-bottom: 1.3px solid rgba(226, 226, 226, 0.856);
 }
-.statedetails::before{
+
+.statedetails::before {
     height: 0.5rem;
     font-size: 0.2rem;
     line-height: 0.6rem;
@@ -625,55 +723,65 @@ body{
     right: 0.1rem;
 }
 
-.absenteeism::before{
-    content: '10次 >'
+.absenteeism::before {
+    content: attr(data-text);
 }
-.askflv::before{
-    content: '10次 >';
+
+.askflv::before {
+    content: attr(data-text);
 }
-.late::before{
-    content: '10次 >';
+
+.late::before {
+    content: attr(data-text);
 }
-.normal::before{
-    content: '10次 >';
+
+.normal::before {
+    content: attr(data-text);
 }
+
+
 /*page3部分*/
-.page3{
+
+.page3 {
     background-color: #F8F8F8;
     overflow: hidden;
     height: calc(100vh - .8rem);
 }
-.page3topbox{
+
+.page3topbox {
     height: 3rem;
     width: 100%;
     background-image: url(../pic/mine_background.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding-top: 2rem;
-    
 }
-.page3headpic{
+
+.page3headpic {
     height: 1.3rem;
     width: 1.3rem;
     background-image: url(../pic/user_default_icon.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 100px 100px;
-    margin:0 auto;
+    margin: 0 auto;
 }
-.page3topbox p{
+
+.page3topbox p {
     text-align: center;
     color: #666;
     line-height: 0.35rem;
 }
-#page3name{
+
+#page3name {
     font-size: 0.3rem;
     line-height: 0.5rem;
     color: #000;
     box-shadow: .8px 0px #000;
     position: relative;
 }
-.moreinfoicon{
+
+.moreinfoicon {
     height: 0.4rem;
     width: 0.4rem;
     background-image: url(../pic/icon_mine_mine.png);
@@ -685,25 +793,29 @@ body{
     right: 0.2rem;
     top: 0.2rem;
 }
-.certification{
+
+.certification {
     padding-right: 0.1rem;
 }
-.certification::after{
+
+.certification::after {
     width: 0.55rem;
     height: 0.27rem;
     content: '';
     background-image: url(../pic/icon_mine_no_authentication.png);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    position: absolute ;
+    position: absolute;
     right: 2.2rem;
     margin: 0.02rem;
 }
-.page3bodybox{
+
+.page3bodybox {
     width: 100%;
     margin-top: 2rem;
 }
-.page3bodybox>p{
+
+.page3bodybox>p {
     height: 0.6rem;
     width: 100%;
     font-size: 0.3rem;
@@ -716,7 +828,8 @@ body{
     background-color: #fff;
     line-height: 0.6rem;
 }
-.page3bodybox p::before{
+
+.page3bodybox p::before {
     height: 0.35rem;
     width: 0.35rem;
     background-repeat: no-repeat;
@@ -727,7 +840,8 @@ body{
     content: '';
     margin: 0.125rem 0;
 }
-.page3bodybox p::after{
+
+.page3bodybox p::after {
     height: 0.35rem;
     width: 0.35rem;
     content: '';
@@ -739,19 +853,24 @@ body{
     margin: 0.125rem 0;
     background-image: url(../pic/icon_right_gray.png);
 }
-.myupload::before{
+
+.myupload::before {
     background-image: url(../pic/icon_mine_upload.png);
 }
-.meetingset::before{
+
+.meetingset::before {
     background-image: url(../pic/icon_meeting_setting.png);
 }
-.allset::before{
+
+.allset::before {
     background-image: url(../pic/icon_app_setting.png);
 }
-.about::before{
+
+.about::before {
     background-image: url(../pic/icon_about_app.png);
 }
-.pageboxwrongtips{
+
+.pageboxwrongtips {
     width: 50%;
     height: 0.4rem;
     line-height: 0.4rem;
@@ -766,7 +885,8 @@ body{
     border-radius: 7px;
     opacity: 0;
 }
-.reservationbox{
+
+.reservationbox {
     width: 2rem;
     background-color: rgba(36, 35, 35, 0.623);
     color: #fff;
@@ -779,15 +899,19 @@ body{
     border-radius: 7px;
     text-align: center;
 }
-.triangle{
+
+.triangle {
     border: 0.2rem solid;
     border-color: transparent transparent rgba(36, 35, 35, 0.623) transparent;
     position: absolute;
     top: -0.37rem;
     right: 0.12rem;
 }
+
+
 /*bottom*/
-.bottombox{
+
+.bottombox {
     position: fixed;
     bottom: 0;
     height: 1rem;
@@ -796,60 +920,71 @@ body{
     background-color: #fff;
     z-index: 2;
 }
-.bottombox >div{
+
+.bottombox>div {
     flex-grow: 1;
     text-align: center;
     color: #666;
     font-size: 0.2rem;
     padding-top: 0.25rem;
 }
-.bottombox span{
+
+.bottombox span {
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 0.3rem;
     height: 0.3rem;
     display: inline-block;
 }
-.bottomlogo1{
+
+.bottomlogo1 {
     background-image: url(../pic/bnv_meeting.png);
 }
-.bottomlogo2{
+
+.bottomlogo2 {
     background-image: url(../pic/bnv_record.png);
 }
-.bottomlogo3{
+
+.bottomlogo3 {
     background-image: url(../pic/bnv_mine.png);
 }
-.bottomlogo1select{
+
+.bottomlogo1select {
     background-image: url(../pic/bnv_meeting_select.png);
 }
-.bottomlogo2select{
+
+.bottomlogo2select {
     background-image: url(../pic/bnv_record_select.png);
 }
-.bottomlogo3select{
+
+.bottomlogo3select {
     background-image: url(../pic/bnv_mine_select.png);
 }
 
+
 /*修改信息*/
-.infomodifica{
+
+.infomodifica {
     width: 100%;
     height: 100%;
     background-color: #F8F8F8;
 }
 
-.infomodificatop{
+.infomodificatop {
     height: 0.8rem;
     width: 100%;
-    background: linear-gradient(to right,#3C6EE4,#10AAF6);
-    color:#fff;
+    background: linear-gradient(to right, #3C6EE4, #10AAF6);
+    color: #fff;
     font-size: 0.28rem;
     text-align: center;
     line-height: 0.8rem;
     z-index: 2;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
     padding: 0 0.2rem;
 }
-.returnlastpage{
+
+.returnlastpage {
     width: .4rem;
     height: .4rem;
     background-image: url(../pic/title_return.png);
@@ -858,7 +993,8 @@ body{
     background-position: center;
     margin: 0.2rem 0;
 }
-.modfheadpic{
+
+.modfheadpic {
     height: 1.4rem;
     width: 1.4rem;
     background-image: url(../pic/user_default_icon.jpg);
@@ -867,55 +1003,65 @@ body{
     border-radius: 100px;
     margin: 0.25rem auto;
 }
-.infomodfdetails{
+
+.infomodfdetails {
     font-size: 0.25rem;
 }
-.infomodfdetails >div{
+
+.infomodfdetails>div {
     margin: 0.2rem 0.25rem;
     line-height: 0.4rem;
     height: 0.4rem;
 }
-.clicktochange{
+
+.clicktochange {
     width: 100%;
     text-align: center;
     font-size: 0.25rem;
     color: #666;
 }
-.man{
+
+.man {
     margin-left: 0.4rem;
 }
+
 input {
-	box-sizing: border-box;
-	height: 0.3rem;
+    box-sizing: border-box;
+    height: 0.3rem;
     width: 60%;
     padding: 0.2rem;
     margin-left: 0.4rem;
-	border: 0.1px solid rgb(189, 188, 188);
+    border: 0.1px solid rgb(189, 188, 188);
     outline: none;
     padding-left: 0.1rem;
     padding-right: .1rem;
     font-size: 0.23rem;
 }
+
 input::-webkit-input-placeholder {
-	color: rgb(189, 188, 188);
-	font-size: 0.23rem;
+    color: rgb(189, 188, 188);
+    font-size: 0.23rem;
 }
+
 input:focus {
-	outline: 0;
-	-webkit-box-shadow: inset 0 .5px .5px rgba(0, 0, 0, .075), 0 0 8px	rgba(102, 175, 233, .6);
-    box-shadow: inset 0 .5px .5px rgba(0, 0, 0, .075), 0 0 8px	rgba(102, 175, 233, .6)
+    outline: 0;
+    -webkit-box-shadow: inset 0 .5px .5px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+    box-shadow: inset 0 .5px .5px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6)
 }
-.wrongtips{
+
+.wrongtips {
     font-size: 0.25rem;
     color: red;
     line-height: 0.3rem;
     text-shadow: red;
     text-align: center;
 }
-.modfsexbox > div{
+
+.modfsexbox>div {
     display: inline-block;
 }
-.circleselect{
+
+.circleselect {
     border-radius: 1000px;
     width: 0.16rem;
     height: 0.16rem;
@@ -924,9 +1070,10 @@ input:focus {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
-.circle{
+
+.circle {
     border-radius: 100px;
     width: 0.25rem;
     height: 0.25rem;
@@ -936,7 +1083,33 @@ input:focus {
     vertical-align: middle;
     box-sizing: content-box;
 }
-.modfname{
+
+.modfname {
     display: inline;
     margin-left: .4rem;
+}
+
+.attendbox>div {
+    text-align: center;
+    border-radius: 10px;
+    color: #333;
+    margin: 0.1rem auto;
+    font-size: 0.23rem;
+    padding: 0.2rem 0;
+}
+
+.absent {
+    background-color: #8cebffa3;
+}
+
+.askleave {
+    background-color: #c5ff8cb5;
+}
+
+.lateat {
+    background-color: #fed28b;
+}
+
+.normalat {
+    background-color: #fff786;
 }

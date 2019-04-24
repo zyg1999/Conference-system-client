@@ -9,7 +9,7 @@
     <script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.7/f2.min.js"></script>
     <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js"></script>
     <script src="https://gw.alipayobjects.com/os/rmsportal/NjNldKHIVQRozfbAOJUW.js"></script>
-    <link rel="stylesheet" href="./style/layui.css"  media="all">
+    <link rel="stylesheet" href="./style/layui.css" media="all">
 </head>
 
 <body>
@@ -33,23 +33,23 @@
                     <input type="text" class="meetingname" placeholder="会议名称">
                     <input type="text" class="meetingname" placeholder="会议简介">
                     <div class="layui-form">
-                            <div class="layui-form-item">
-                              <div class="layui-inline">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
                                 <div class="layui-input-inline" style="left:0;width:70%;margin:0 15%;">
-                                  <input type="text" class="layui-input" id="reservationstart" style="height: .5rem;border-radius:10px;margin-left:0;" placeholder="点击选择开始时间">
+                                    <input type="text" class="layui-input" id="reservationstart" style="height: .5rem;border-radius:10px;margin-left:0;" placeholder="点击选择开始时间">
                                 </div>
-                              </div>
-                              <div class="layui-inline">
-                                <div class="layui-input-inline" style="left:0;width:70%;margin:0 15%;">
-                                  <input type="text" class="layui-input" id="reservationend" style="height: .5rem;border-radius:10px;margin-left:0;" placeholder="点击选择结束时间">
-                                </div>
-                              </div>
                             </div>
-                          </div>
+                            <div class="layui-inline">
+                                <div class="layui-input-inline" style="left:0;width:70%;margin:0 15%;">
+                                    <input type="text" class="layui-input" id="reservationend" style="height: .5rem;border-radius:10px;margin-left:0;" placeholder="点击选择结束时间">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <p class="determine">确&nbsp;&nbsp;&nbsp;&nbsp;定</p>
                     <p class="usertips"></p>
                 </div>
-                <div class="meetingdetailspage" >
+                <div class="meetingdetailspage">
                     <div class="meetingdetailstop">
                         <span class="metdetilsreturn"></span>
                         <span class="meetingdetilname">答辩</span>
@@ -57,46 +57,42 @@
                     </div>
                     <div class="meetingdetailsbody">
                         <div class="meetingdetailsbodycon">
-                            <p class="attendancepeosum">2人</p>
+                            <p class="attendancepeosum"></p>
                             <p class="meetingnowstatus">未开始</p>
                             <div class="timeandadress">
-                                <p class="meetingstarttime">开始时间：2019-04-13 08:00:00</p>
-                                <p class="meetingendtime">结束时间：2019-04-13 09:00:00</p>
-                                <p class="meetingadress">FZ108</p>
+                                <p class="meetingstarttime"></p>
+                                <p class="meetingendtime"></p>
+                                <p class="meetingadress"></p>
                             </div>
                             <div class="meetingIntroduction">
-                                <p style="padding-left:.1rem;">会议信息</p>
-                                <div class="introductioncontext">一个会议</div>
+                                <p style="padding-left:.1rem;">会议简介</p>
+                                <div class="introductioncontext"></div>
                             </div>
                             <div class="meetingnotes">
                                 <p style="padding-left:.1rem;">会议笔记</p>
                                 <textarea name="notestext" class="notestext" id="" cols="30" rows="10"></textarea>
                             </div>
-                            <div class="meetingfile">会议文件</div>
                             <div class="attendancepeobox">
                                 <div class="attendancepeotop">
                                     <span style="padding-left:.1rem;">成员</span>
                                     <span class="addpeople">添加成员</span>
                                 </div>
                                 <div class="peoplelist">
-                                    <p>师东璇（组织者）</p>
-                                    <p>王舜</p>
-                                    <p>王舜</p>
-                                    <p>王舜</p>
-
-                                    <p>王舜</p>
-                                    <p>王舜</p>
-                                    <p>王舜</p>
-                                    <p>王舜</p>
-                                    <p>王舜</p><p>王舜</p>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
                 <div class="partbox">
                     <div class="part1" style="display:none;">
+                        <!-- <div class="item" nonce=' + data[i].meetingId + '><span class="meetingtittle"></span><span class="meetingstatus"></span>
+                            <div class="more"></div>
+                            <div class="details"><span class="people pic1">人</span><span class="myself pic1"></span></div>
+                            <div class="details"><span class="adress pic1"></span><span class="meettime pic1"></span></div>
+                            <div class="details">
+                                <span class="sumtime pic1"></span></div>
+                        </div> -->
                     </div>
                     <div class="part2" style="display:block;">
                     </div>
@@ -116,7 +112,7 @@
                             </div>
                             <div class="textline2">
                                 <span class="lefttext" id="selfinfomation">个人资料 ＞</span>
-                                <span class="righttext">95/100</span>
+                                <span class="righttext" id="proportion">95/100</span>
                             </div>
                         </div>
                     </div>
@@ -138,10 +134,22 @@
                         <div class="attenddetailtittle">出勤明细</div>
                         <p class="articlegrey"></p>
                         <div class="attenddetailtext">
-                            <div class="absenteeism statedetails">缺勤</div>
-                            <div class="askflv statedetails">请假</div>
-                            <div class="late statedetails">迟到</div>
-                            <div class="normal statedetails">正常</div>
+                            <div data-text='' class="absenteeism statedetails">
+                                <p>缺勤</p>
+                                <div class="attendbox" style="display:none;"></div>
+                            </div>
+                            <div data-text='' class="askflv statedetails">
+                                <p>请假</p>
+                                <div class="attendbox" style="display:none;"></div>
+                            </div>
+                            <div data-text='' class="late statedetails">
+                                <p>迟到</p>
+                                <div class="attendbox" style="display:none;"></div>
+                            </div>
+                            <div data-text='' class="normal statedetails">
+                                <p>正常</p>
+                                <div class="attendbox" style="display:none;"></div>
+                            </div>
 
                         </div>
 
@@ -209,8 +217,7 @@
             </div>
             <div class="modfphonebox">
                 <span>手机</span>
-                <input type="text" class="modfphone" maxlength='11' autocomplete="off" onkeyup="value=value.replace(/[^\d]/g,'')"
-                    ng-pattern="/[^a-zA-Z]/">
+                <input type="text" class="modfphone" maxlength='11' autocomplete="off" onkeyup="value=value.replace(/[^\d]/g,'')" ng-pattern="/[^a-zA-Z]/">
             </div>
             <div class="modfmailbox">
                 <span>邮箱</span>
@@ -222,17 +229,20 @@
 </body>
 <script src="./layui.js" charset="utf-8"></script>
 <script>
-        layui.use('laydate', function(){
-          var laydate = layui.laydate;
-          //日期时间范围
-          laydate.render({
-            elem: '#reservationstart'
-            ,type: 'datetime'
-          });
-          laydate.render({
-            elem: '#reservationend'
-            ,type: 'datetime'
-          });
+    layui.use('laydate', function() {
+        var laydate = layui.laydate;
+        //日期时间范围
+        laydate.render({
+            elem: '#reservationstart',
+            type: 'datetime',
+            min: 0
         });
-        </script>
+        laydate.render({
+            elem: '#reservationend',
+            type: 'datetime',
+            min: 0
+        });
+    });
+</script>
+
 </html>
