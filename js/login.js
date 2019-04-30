@@ -13,7 +13,7 @@ let url = 'http://localhost:8888/';//'http://192.168.137.1:8888/'
 let height = window.screen.height;
 let warp=document.getElementsByClassName('warp')[0];
 warp.style='height:'+height+'px';
-
+let loadingbox = document.getElementsByClassName('loadingbox')[0];
 let eyeflag = 1;
 eye.addEventListener('click', function () {
     if (eyeflag) {
@@ -42,6 +42,7 @@ del.addEventListener('click', function () {
 });
 
 loginbnt.addEventListener('click', function () {
+    loading();
     if (inputs[1].value.length != 11) {
         wrongtips.innerHTML = '请输入正确手机号';
     }
@@ -60,7 +61,7 @@ loginbnt.addEventListener('click', function () {
                 url:'http://www.shidongxuan.top/smartMeeting_Web/user/login.do',
                 type:'post',
                 data:useraccount,
-                async: false,
+                async: true,
                 contenttype:'urlencode',
                 success: function (xhr) {
                     ajaxflag=1;
@@ -78,11 +79,13 @@ loginbnt.addEventListener('click', function () {
                     }else{
                         wrongtips.innerHTML='账户名或密码错误';
                     } 
+                    removeLoaing();
                 },
                 fail: function (err) {   
                     ajaxflag=1;
                     wrongtips.innerHTML='通信错误';                                                                                                       
                     window.location.href=url+'login.html';
+                    removeLoaing();
                 }
             }) 
         }       
@@ -92,3 +95,11 @@ let forget = document.getElementsByClassName('forget')[0];
 forget.addEventListener('click',function(){
     window.location.href=url+'findpswd.html';
 })
+
+function loading(){
+    loadingbox.style='display:flex;'
+
+}
+function removeLoaing(){
+    loadingbox.style='display:none;';
+}

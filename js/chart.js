@@ -38,7 +38,7 @@ function attendanceDetail() {
         url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/getUserMeetings.do',
         type: 'post',
         contenttype: 'urlencode',
-        async: false,
+        async: true,
         data: { userId: ID, type: 2 },
         token: token,
         success: function(xhr) {

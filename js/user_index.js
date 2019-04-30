@@ -8,6 +8,7 @@ window.onload = function() {
 }
 
 var ajax = require('./public_Ajax.js').ajax;
+var ajax2 = require('./public_Ajax.js').ajax2;
 let url = 'http://localhost:8888/'; //'http://192.168.137.1:8888/'
 let sexflag;
 //顶部点击切换
@@ -196,7 +197,7 @@ getAllMeetingRomInfo();
 
 function getAllMeetingRomInfo() {
     if (ajaxflag == 0) {
-        deilefail('不能多次发送');
+        /* deilefail('不能多次发送'); */
         return;
     }
     ajaxflag = 0;
@@ -206,7 +207,7 @@ function getAllMeetingRomInfo() {
         url: 'http://www.shidongxuan.top/smartMeeting_Web/room/getAllRooms.do',
         type: 'post',
         contenttype: 'urlencode',
-        async: false,
+        async: true,
         token: token,
         success: function(xhr) {
             ajaxflag = 1;
@@ -226,6 +227,7 @@ function getAllMeetingRomInfo() {
                         '<div class="details"><span class="accommodate pic2">可容纳' + data[i].content + '人</span></div><div class="reservationbtn" nonce="' + res.data[i].status + '"id=' + res.data[i].status + ' style="background-color:' + color[res.data[i].status] + ';">' + '预</div></div>';
                 }
                 parts[1].innerHTML = part2innerH;
+                reservation();
             }
         },
         fail: function() {
@@ -270,7 +272,7 @@ function reservation() {
         })
     }
 }
-reservation();
+
 let fork = document.getElementsByClassName('fork')[0];
 let scheduledInputs = reservationbigbox.getElementsByTagName('input');
 fork.addEventListener('click', function() {
@@ -304,7 +306,7 @@ function scheduledMeeting() {
         url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/whetherBook.do',
         type: 'post',
         contenttype: 'urlencode',
-        async: false,
+        async: true,
         data: { roomId: meetinginfo.roomId, startTime: meetinginfo.startTime, endTime: meetinginfo.endTime },
         token: token,
         success: function(xhr) {
@@ -325,7 +327,7 @@ function scheduledMeeting() {
             url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/bookMeeting.do',
             type: 'post',
             contenttype: 'urlencode',
-            async: false,
+            async: true,
             data: meetinginfo,
             token: token,
             success: function(xhr) {
@@ -348,7 +350,7 @@ function scheduledMeeting() {
 //获取我正在进行或还未进行的会议
 function getMyMeetingNow() {
     if (ajaxflag == 0) {
-        deilefail(pageboxwrongtips, '不能多次发送');
+        /* deilefail(pageboxwrongtips, '不能多次发送'); */
         return;
     }
     ajaxflag = 0;
@@ -359,7 +361,7 @@ function getMyMeetingNow() {
         url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/getUserMeetings.do',
         type: 'post',
         contenttype: 'urlencode',
-        async: false,
+        async: true,
         data: { userId: ID, type: 1 },
         token: token,
         success: function(xhr) {
@@ -383,6 +385,7 @@ function getMyMeetingNow() {
                         '<span class="sumtime pic1">' + data[i].startTime + '-' + data[i].endTime + '</span></div></div>'
                 }
                 parts[0].innerHTML = part1IneerH;
+                willMeeting();
             }
         },
         fail: function() {
@@ -398,13 +401,11 @@ function countTime(endTime, startTime) {
 let mymeetingtop = document.getElementsByClassName('mymeetingtop')[0];
 mymeetingtop.addEventListener('click', function() {
     getMyMeetingNow();
-    willMeeting();
 })
 
 //获取会议历史
 function getHistoryRecord() {
     if (ajaxflag == 0) {
-        deilefail('不能多次发送');
         return;
     }
     ajaxflag = 0;
@@ -415,7 +416,7 @@ function getHistoryRecord() {
         url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/getUserMeetings.do',
         type: 'post',
         contenttype: 'urlencode',
-        async: false,
+        async: true,
         data: { userId: ID, type: 2 },
         token: token,
         success: function(xhr) {
@@ -425,7 +426,7 @@ function getHistoryRecord() {
                 updateToken(res.msg, getHistoryRecord);
             } else if (res.status == 0) {
                 let data = res.data;
-                if (data.length == 0) {
+                if (data .length == 0) {
                     deilefail(pageboxwrongtips, '暂无记录');
                     return;
                 }
@@ -460,11 +461,11 @@ historytop.addEventListener('click', function() {
 let userInfo = {};
 //根据手机号获取用户信息
 function getSelfInfoByphoneNum() {
-    if (ajaxflag == 0) {
-        deilefail('不能多次发送');
-        return;
-    }
-    ajaxflag = 0;
+    /* if (ajaxflag == 0) {
+        /* deilefail('不能多次发送'); */
+        
+   
+   /*  ajaxflag = 0; */
     let token = sessionStorage.getItem('token');
     tokenExist(pageboxwrongtips, token);
     let phone = sessionStorage.getItem('phone');
@@ -472,20 +473,21 @@ function getSelfInfoByphoneNum() {
         url: 'http://www.shidongxuan.top/smartMeeting_Web/user/getOneByPhone.do',
         type: 'post',
         contenttype: 'urlencode',
-        async: false,
+        async: true,
         data: { phone: phone },
         token: token,
         success: function(xhr) {
             let res = JSON.parse(xhr.responseText);
-            ajaxflag = 1;
+            
             if (res.status == 0) {
                 userInfo = res.data;
+                fillInfo();
             } else if (res.status == 100) {
                 updateToken(res.msg, getSelfInfoByphoneNum);
             }
         },
         fail: function() {
-            ajaxflag = 1;
+            
             deilefail(pageboxwrongtips, '通信失败');
         }
     })
@@ -512,7 +514,7 @@ function fillInfo() {
         sexflag = 1;
     }
 }
-fillInfo();
+
 //性别选择按钮切换
 for (let i = 0; i < circles.length; i++) {
     circles[i].addEventListener('click', function() {
@@ -540,6 +542,9 @@ let peoplelist = document.getElementsByClassName('peoplelist')[0];
 let meetingdetilname = document.getElementsByClassName('meetingdetilname')[0];
 let attendancepeosum = document.getElementsByClassName('attendancepeosum')[0];
 
+let meetingId;
+let meetingPeoplealr;
+let masterID;
 //即将开的会议的详细信息
 function willMeeting() {
     let part1Items = document.getElementsByClassName('part1')[0].children;
@@ -547,22 +552,41 @@ function willMeeting() {
     let meetingdetails;
     for (let i = 0; i < part1Items.length; i++) {
         part1Items[i].addEventListener('click', function() {
+            meetingPeoplealr=[];
             peoplelist.innerHTML = '';
             meetingdetailspage.style = 'display:block';
-            let meetingId = part1Items[i].nonce;
+            meetingId = part1Items[i].nonce;
             let token = sessionStorage.getItem('token');
             tokenExist(pageboxwrongtips, token);
             ajax({
                 url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/getMeetingById.do',
                 type: 'post',
                 contenttype: 'urlencode',
-                async: false,
+                async: true,
                 data: { meetingId: meetingId },
                 token: token,
                 success: function(xhr) {
                     let res = JSON.parse(xhr.responseText);
                     if (res.status == 0) {
                         meetingdetails = res.data;
+                        meetingdetilname.innerHTML = meetingdetails.meetingName;
+                        attendancepeosum.innerHTML = meetingdetails.memberStatus.length + '人';
+                        meetingstarttime.innerHTML = '开始时间：' + meetingdetails.startTime;
+                        meetingendtime.innerHTML = '结束时间：' + meetingdetails.endTime;
+                        meetingadress.innerHTML = '会议地点：' + meetingdetails.roomName;
+                        introductioncontext.innerHTML = meetingdetails.meetingIntro;
+                        masterID=meetingdetails.masterId;
+                        peoplelist.innerHTML = '<p> ' + meetingdetails.masterName + '&nbsp;&nbsp;(组织者)</p>';
+                        for (let i = 0; i < meetingdetails.memberStatus.length; i++) {
+                            if (meetingdetails.masterId != meetingdetails.memberStatus[i].userId)  
+                               peoplelist.innerHTML += '<p> ' + meetingdetails.memberStatus[i].username + '</p>';
+                            let {userId:userId,username:username}=meetingdetails.memberStatus[i];
+                            let obj={
+                                userId:userId,
+                                username:username
+                            }
+                            meetingPeoplealr.push(obj);
+                        }
                     } else if (res.status == 100) {
                         updateToken(res.msg, willMeeting);
                     }
@@ -571,18 +595,8 @@ function willMeeting() {
                     deilefail(pageboxwrongtips, '通信失败');
                 }
             });
-            meetingdetilname.innerHTML = meetingdetails.meetingName;
-            attendancepeosum.innerHTML = meetingdetails.memberStatus.length + '人';
-            meetingstarttime.innerHTML = '开始时间：' + meetingdetails.startTime;
-            meetingendtime.innerHTML = '结束时间：' + meetingdetails.endTime;
-            meetingadress.innerHTML = '会议地点：' + meetingdetails.roomName;
-            introductioncontext.innerHTML = meetingdetails.meetingIntro;
-            peoplelist.innerHTML = '<p> ' + meetingdetails.masterName + '&nbsp;&nbsp;(组织者)</p>';
-            for (let i = 0; i < meetingdetails.memberStatus.length; i++) {
-                if (meetingdetails.masterId == meetingdetails.memberStatus[i].userId)
-                    return;
-                peoplelist.innerHTML += '<p> ' + meetingdetails.memberStatus[i].username + '</p>';
-            }
+           
+
 
         })
     }
@@ -593,8 +607,123 @@ let meetingdetailspage = document.getElementsByClassName('meetingdetailspage')[0
 metdetilsreturn.addEventListener('click', function() {
     meetingdetailspage.style = 'display:none';
 });
+
+let peopleSelectList = document.getElementsByClassName('peopleSelectList')[0];
+let allPeople;
+//请求所有人
+function getAllPeople(){
+    allPeople=new Map();
+    let token = sessionStorage.getItem('token');
+            tokenExist(pageboxwrongtips, token);
+            ajax({
+                url: "http://www.shidongxuan.top/smartMeeting_Web/user/getAll.do", 
+                type: 'post',   
+                contenttype:'urlencode',
+                token:token,
+                data: null, 
+                async: true,   //是否异步
+                success: function (xhr) {
+                    let res = JSON.parse(xhr.responseText);
+                    if (res.status == 0) {
+                        for(let i=0;i<res.data.length;i++){
+                            let {id:id,username:username}=res.data[i];
+                            let obj={
+                                id:id,
+                                username:username,
+                                add:false
+                            }
+                            allPeople.set(id,obj);
+                            
+                        }  
+                        for(let i=0;i<meetingPeoplealr.length;i++){ 
+                            allPeople.get(meetingPeoplealr[i].userId).add=true;
+                        }
+                        let peopleSelectListinner='';
+                        for (let key of allPeople.keys()) {
+                            if(allPeople.get(key).add===false){
+                                peopleSelectListinner+='<label class="onepeople"><p class="peopleName">'+allPeople.get(key).username+'</p><input nonce="'+allPeople.get(key).id+'" type="checkbox" class="checkbox"></label>'
+                            }else{
+                                peopleSelectListinner+='<label class="onepeople"><p class="peopleName">'+allPeople.get(key).username+'</p><input nonce="'+allPeople.get(key).id+'" type="checkbox" class="checkbox" disabled="false" checked="true"></label>'
+                            }
+                        }
+                        peopleSelectList.innerHTML=peopleSelectListinner;
+
+                    }else if (res.status == 100) {
+                        updateToken(res.msg, willMeeting);
+                    }
+                },
+                fail: function (err) {
+                    deilefail(pageboxwrongtips, '通信失败');
+                }
+            })
+}
 //添加会议成员
+let addPeoplbox = document.getElementsByClassName('addPeoplbox')[0];
 let addpeople = document.getElementsByClassName('addpeople')[0]; //添加成员按钮
 addpeople.addEventListener('click', function() {
-
+    if(userInfo.id==masterID){
+        addPeoplbox.style='display:flex;';
+        getAllPeople();
+    }else{
+        deilefail(pageboxwrongtips, '非组织者无权限');
+        return;
+    }
 })
+let selectOk = document.getElementsByClassName('selectOk')[0];
+selectOk.addEventListener('click',function(){
+    addPeopleToMeet(meetingId);
+    console.log(11);
+})
+//提交选择人员
+function addPeopleToMeet(meetingId){
+    let peopleAdd;
+    let idsList=[];
+    let checkboxs = document.getElementsByClassName('checkbox');
+    let count=0;
+    for(let i=0;i<checkboxs.length;i++){
+        if(checkboxs[i].checked&&!checkboxs[i].disabled){
+            if(count==0){
+                peopleAdd='userIds='+checkboxs[i].nonce;
+                idsList.push(checkboxs[i].nonce);
+                count=1;
+                continue;
+            }
+            peopleAdd+=','+checkboxs[i].nonce;
+            idsList.push(checkboxs[i].nonce);
+        }
+        
+    }
+    peopleAdd+='&meetingId='+meetingId;
+    let token = sessionStorage.getItem('token');
+    tokenExist(pageboxwrongtips, token);
+    //发送与会人员
+    ajax2({
+        url: "http://www.shidongxuan.top/smartMeeting_Web/meeting/inviteMembers.do", 
+        type: 'post',   //请求方式
+        contenttype:'urlencode',
+        token:token,
+        data:peopleAdd , //请求json参数
+        async: true,   //是否异步
+        success: function (xhr) {
+            let res = JSON.parse(xhr.responseText);
+            if (res.status == 0) {
+                deilefail(pageboxwrongtips, '添加成功');
+            }
+            addPeoplbox.style='display:none;';
+            //添map
+            for(let i=0;i<idsList.length;i++){
+                allPeople.get(Number.parseInt(idsList[i])).add=true;
+            }
+            //刷新列表
+            willMeeting();
+        },
+        fail: function (err) {
+            deilefail(pageboxwrongtips, '通信失败');
+        }
+    })
+}
+//添加与会人员返回健
+let fork2 = document.getElementsByClassName('fork2')[0];
+fork2.addEventListener('click',function(){
+    addPeoplbox.style='display:none;';
+});
