@@ -147,7 +147,7 @@ body {
     display: none;
 }
 
-.meetingdetailstop {
+.meetingdetailstop,.hismeetingdetailstop {
     width: 100%;
     height: .7rem;
     background: linear-gradient(to right, #3C6EE4, #10AAF6);
@@ -156,7 +156,6 @@ body {
 
 .meetingdetailsbody {
     height: calc(100vh - .7rem);
-    /* background-image: url(../pic/meetingdetailspage_bg.png); */
     background-size: 100% 100%;
     padding-top: .2rem;
     background-color: #ededed;
@@ -197,7 +196,7 @@ body {
     box-shadow: 2px 2px 5px #a3a1a1;
 }
 
-.metdetilsreturn {
+.metdetilsreturn,.hismetdetilsreturn {
     height: .6rem;
     width: .6rem;
     background-image: url(../pic/0a0f024a349bd0b80f4fc0dd5a95d88c.png);
@@ -243,7 +242,7 @@ body {
     top: .1rem;
 }
 
-.meetingdetilname {
+.meetingdetilname,.hismeetingdetilname {
     font-size: .3rem;
     line-height: .8rem;
     flex: 1;
@@ -280,6 +279,7 @@ body {
     line-height: .5rem;
     background-color: #fff;
     box-shadow: 2px 2px 5px #a3a1a1;
+    position: relative;
 }
 
 .meetingnowstatus {
@@ -305,7 +305,7 @@ body {
     margin-top: 0.1rem;
 }
 
-.fork,.fork2 {
+.fork,.fork2,.fork3 {
     width: 0.4rem;
     height: 0.4rem;
     background-image: url(../pic/051a896f7e6ec014b4ee0bbb731ca6a3.png);
@@ -315,7 +315,7 @@ body {
     margin-right: 0.3rem;
     margin-top: 0.3rem;
 }
-.fork2{
+.fork2,.fork3{
     position: absolute;
     right: 0;
     top: 0;
@@ -333,7 +333,12 @@ body {
     border-radius: 100px;
 }
 
-
+.historymeetingbox{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
 /*part1部分*/
 
 .part1 .details {
@@ -426,6 +431,17 @@ body {
     background-image: url(../pic/3fc6e699829933cbfde787588b58fc0e.png);
 }
 
+.peoplestatus{
+    width: .4rem;
+    height: .4rem;
+    background-image: url(../pic/690ff00d83636cfa08b8696fe2df2b5d.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+    position: absolute;
+    right: .1rem;
+    top: .1rem;
+}
 
 /*part2部分*/
 
@@ -595,10 +611,54 @@ body {
     font-size: 0.2rem;
     line-height: 0.4rem;
 }
+.hismeetingdetailsbody{
+    height: calc(100vh - .7rem);
+    background-color: #f8f8f8;
+    overflow: auto;
+}
+.Listsbox{
+    margin-top: .2rem;
+}
 
-
+.onepeople{
+    display: flex;
+}
+.hispeoplelist{
+    background-color: #fff;
+    width: 80%;
+    margin: .2rem 10%;
+    padding: .2rem;
+    font-size: 0.23rem;
+    border-radius: 10px;
+}
+.hispeople{
+    position: relative;
+    padding-left: 1rem;
+    line-height: .6rem;
+    flex:1;
+}
+.hisheadpic{
+    width: .6rem;
+    height: .6rem;
+    position: absolute;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    left: 1rem;
+    background-position: center;
+    border-radius: 100px;
+}
+.hisstatus{
+    width: 1rem;
+    position: absolute;
+    text-align: center;
+    border-radius: 9px;
+    left: 3.2rem;
+    height: .4rem;
+    line-height: .4rem;
+    color: #fff;
+    font-size: .2rem;
+}
 /*page2部分*/
-
 .page2topbox {
     height: 3rem;
     width: 100%;
@@ -622,7 +682,6 @@ body {
 .page2headpic {
     height: 1.4rem;
     width: 1.4rem;
-    background-image: url(../pic/dd2fc9bde5e974ce3a6a7ea7a1afff52.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 100px;
@@ -804,6 +863,26 @@ body {
     content: attr(data-text);
 }
 
+.charttittle,.chartstart,.chartend {
+    position: relative;
+}
+.charttittle::before,.chartstart::before,.chartend::before{
+    width: .59rem;
+    height: .59rem;
+    content: '';
+    background-repeat: no-repeat;
+    background-size: 65% 66%;
+    position: absolute;
+    background-position: center;
+}
+.charttittle::before{
+    background-image: url(../pic/72a6ab8b3ab84c1c4e463a700efa03fd.png);
+    left: 12%;
+}
+.chartstart::before,.chartend::before{
+    background-image: url(../pic/e0816a99691f69437d6d56d8cbdfd3ac.png);
+    left: 12%;
+}
 
 /*page3部分*/
 
@@ -825,7 +904,6 @@ body {
 .page3headpic {
     height: 1.3rem;
     width: 1.3rem;
-    background-image: url(../pic/dd2fc9bde5e974ce3a6a7ea7a1afff52.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 100px 100px;
@@ -1063,7 +1141,6 @@ body {
 .modfheadpic {
     height: 1.4rem;
     width: 1.4rem;
-    background-image: url(../pic/dd2fc9bde5e974ce3a6a7ea7a1afff52.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
     border-radius: 100px;
@@ -1179,7 +1256,7 @@ input:focus {
 .normalat {
     background-color: #fff786;
 }
-.addPeoplbox{
+.addPeoplbox,.lookpeoplestatus{
     position: absolute;
     top: 0;
     left: 0;
@@ -1191,9 +1268,34 @@ input:focus {
     align-items: center;
     flex-direction: column;
 }
-.peopleSelectList{
+.onestatus{
+    display: flex;
+    padding: .2rem;
+    line-height: .5rem;
+}
+.statuspic{
+    width: .6rem;
+    height: .6rem;
+    background-size: 100% 100%;
+    display: inline-block;
+    border-radius: 100px;
+}
+.statusname{
+    flex: 1;
+    padding-left: .7rem;
+    font-size: .25rem;
+}
+.statusInner{
+    height: .5rem;
+    width: 1rem;
+    line-height: .5rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-right: .2rem;
+}
+.peopleSelectList,.statusList{
     width: 5rem;
-    max-height: 6rem;
+    max-height: 6.5rem;
     background-color: #F8F8F8;
     overflow: auto;
     padding: .1rem 0;
@@ -1230,4 +1332,17 @@ input:focus {
     color: #fff;
     background-color: #1991ED;
     border-radius: 100px;
+}
+.startandEnd{
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 100px;
+    position: fixed;
+    bottom: .4rem;
+    right: .4rem;
+    background-color: #08B9FD;
+    background-image: url(../pic/13634fce412b952b55c5f2aef9490a71.png);
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
