@@ -59,7 +59,7 @@ function attendanceDetail() {
                 for (let i = 0; i < attenddetailtextchil.length; i++) {
                     attenddetailtextchil[i].setAttribute('data-text', attendanceCount[i + 1] + '次>');
                 }
-                proportion.innerHTML = attendanceCount[4] + '&nbsp;/&nbsp;' + attendanceAll;
+                proportion.innerHTML = attendanceCount[1] + '&nbsp;/&nbsp;' + attendanceAll;
                 attendanceDetailFill(data);
             }
         },
@@ -74,11 +74,11 @@ function chartP() {
     let mountNode = document.getElementById('mountNode');
     mountNode.style = 'width:' + width + 'px;' + 'height:' + (width / 3 * 2) + 'px';
     var data = [{
-        name: '缺勤',
+        name: '正常',
         percent:  parseFloat(((attendanceCount[1] / attendanceAll)* 100).toFixed(2)),
         a: '1'
     }, {
-        name: '请假',
+        name: '缺勤',
         percent:  parseFloat(((attendanceCount[2] / attendanceAll)* 100).toFixed(2)) ,
         a: '1'
     }, {
@@ -86,7 +86,7 @@ function chartP() {
         percent:  parseFloat(((attendanceCount[3] / attendanceAll)* 100).toFixed(2) ),
         a: '1'
     }, {
-        name: '正常',
+        name: '请假',
         percent:  parseFloat(((attendanceCount[4] / attendanceAll)* 100).toFixed(2) ),
         a: '1'
     }];
@@ -138,20 +138,20 @@ function attendanceDetailFill(data) {
     let normalinner = '';
 
     for (let i = 0; i < data.length; i++) {
-        if (data[i].userStatus == 1) {
+        if (data[i].userStatus == 2) {
             lackinner += '<div class="absent"><p class="charttittle">会议名称：' + data[i].meetingName + '</p><p class="chartstart">开始时间：' + data[i].startTime + '</p><p class="chartend">结束时间：' +data[i].endTime + '</p></div>';
-        } else if (data[i].userStatus == 2) {
+        } else if (data[i].userStatus == 4) {
             askflvinner += '<div class="askleave"><p class="charttittle">会议名称：' + data[i].meetingName + '</p><p class="chartstart">开始时间：' + data[i].startTime + '</p><p class="chartend">结束时间：' +data[i].endTime + '</p></div>';
         } else if (data[i].userStatus == 3) {
             lateinner += '<div class="lateat"><p class="charttittle">会议名称：' + data[i].meetingName + '</p><p class="chartstart">开始时间：' + data[i].startTime + '</p><p class="chartend">结束时间：' +data[i].endTime + '</p></div>';
-        } else if (data[i].userStatus == 4) {
+        } else if (data[i].userStatus == 1) {
             normalinner += '<div class="normalat"><p class="charttittle">会议名称：' + data[i].meetingName + '</p><p class="chartstart">开始时间：' + data[i].startTime + '</p><p class="chartend">结束时间：' +data[i].endTime + '</p></div>';
         }
     }
-    attendbox[0].innerHTML = lackinner;
-    attendbox[1].innerHTML = askflvinner;
+    attendbox[0].innerHTML = normalinner;
+    attendbox[1].innerHTML = lackinner;
     attendbox[2].innerHTML = lateinner;
-    attendbox[3].innerHTML = normalinner;
+    attendbox[3].innerHTML = askflvinner;
     let anflag = 0;
     for (let i = 0; i < attenddetailtextchil.length; i++) {
         attenddetailtextchil[i].addEventListener('click', function() {

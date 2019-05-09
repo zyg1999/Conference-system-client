@@ -8,6 +8,7 @@
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>智慧会议系统</title>
+    <link rel="shortcut icon" href="./pic/favicon-20190509100336576.ico" type="image/x-icon">
     <script src="https://gw.alipayobjects.com/os/antv/assets/f2/3.3.7/f2.min.js"></script>
     <script src="https://gw.alipayobjects.com/os/antv/assets/lib/jquery-3.2.1.min.js"></script>
     <script src="https://gw.alipayobjects.com/os/rmsportal/NjNldKHIVQRozfbAOJUW.js"></script>
@@ -19,9 +20,8 @@
       <div class="pagebox">
         <div class="page1" style="display:block;">
           <div class="page1top">
-            <span class="mymeetingtop">我的</span>&nbsp;&nbsp;&nbsp;
-            <span class="meetingroomtop topselect">会议室</span
-            >&nbsp;&nbsp;&nbsp;
+            <span class="mymeetingtop">我的</span>
+            <span class="meetingroomtop topselect">会议室</span>
             <span class="historytop">历史</span>
             <span class="add">+</span>
           </div>
@@ -34,7 +34,7 @@
             <p class="meetingroomid" style="display:none;"></p>
             <input type="text" class="meetingname" placeholder="会议名称" />
             <input type="text" class="meetingname" placeholder="会议简介" />
-            <div class="layui-form">
+            <div class="layui-form" style="margin-top: .2rem;">
               <div class="layui-form-item">
                 <div class="layui-inline">
                   <div
@@ -46,7 +46,7 @@
                       class="layui-input"
                       id="reservationstart"
                       style="height: .5rem;border-radius:10px;margin-left:0;"
-                      placeholder="点击选择开始时间"
+                      placeholder="点击选择开始时间" readOnly='readOnly'
                     />
                   </div>
                 </div>
@@ -60,7 +60,7 @@
                       class="layui-input"
                       id="reservationend"
                       style="height: .5rem;border-radius:10px;margin-left:0;"
-                      placeholder="点击选择结束时间"
+                      placeholder="点击选择结束时间" readOnly='readOnly'
                     />
                   </div>
                 </div>
@@ -73,7 +73,7 @@
             <div class="meetingdetailstop">
               <span class="metdetilsreturn"></span>
               <span class="meetingdetilname"></span>
-              <span class="meetingnotessave">保存</span>
+              <span style="width: .6rem;"></span>
             </div>
             <div class="meetingdetailsbody">
               <div class="meetingdetailsbodycon">
@@ -90,13 +90,7 @@
                 </div>
                 <div class="meetingnotes">
                   <p style="padding-left:.1rem;">会议笔记</p>
-                  <textarea
-                    name="notestext"
-                    class="notestext"
-                    id=""
-                    cols="30"
-                    rows="10"
-                  ></textarea>
+                  <div class="takenotes"></div>
                 </div>
                 <div class="attendancepeobox">
                   <div class="attendancepeotop">
@@ -109,116 +103,132 @@
               </div>
             </div>
             <div class="addPeoplbox" style="display:none">
-                <h2 class="addPTittle">人员列表</h2>
-                <div class="fork2"></div>
-                <div class="peopleSelectList"></div>
-                <div class="selectOk">确认添加</div>
+              <h2 class="addPTittle">人员列表</h2>
+              <div class="fork2"></div>
+              <div class="peopleSelectList"></div>
+              <div class="selectOk">确认添加</div>
             </div>
             <div class="lookpeoplestatus" style="display:none;">
               <h2 style="color:#fff;">人员状态</h2>
               <div class="fork3"></div>
-              <div class="statusList">
-                <div class="onestatus">
-                  <span class="statuspic"></span>
-                  <p class="statusname">哈哈哈</p>
-                  <span class="statusInner"></span>
-                </div>
-              </div>
+              <div class="statusList"></div>
             </div>
           </div>
           <div class="historymeetingbox" style="display:none">
             <div class="hismeetingdetailstop">
-                <span class="hismetdetilsreturn"></span>
-                <span class="hismeetingdetilname">寒假会议</span>
-                <span style="width: .6rem;"></span>
+              <span class="hismetdetilsreturn"></span>
+              <span class="hismeetingdetilname"></span>
+              <span style="width: .6rem;"></span>
             </div>
             <div class="hismeetingdetailsbody">
               <div class="Listsbox">
                 <h3 style="margin-left:.2rem;">参会人员</h3>
                 <div class="hispeoplelist"></div>
               </div>
+              <div class="hisnotebox">
+                <h3 style="margin-left:.2rem;">会议笔记</h3>
+                <div class="notesdetails">暂无笔记</div>
+              </div>
+            </div>
+          </div>
+          <div class="notebox" style="display:none">
+            <div class="notetittle">
+                <span class="notereturn"></span>
+                <span class="notename">会议笔记</span>
+                <span class="notessave">保存</span>
             </div> 
-          </div>
-          <div class="partbox">
-            <div class="part1" style="display:none;">
-              <div class="part1" style="display: block;"></div>
+            <div class="notearea">
+                <span class="noteicon">笔记</span>
+                <div class="showcount"><span id="text-count" value="">0</span>/1000</div> 
+                 <textarea class="notescontent" cols="40" rows="5" id="note"
+                 name="note" maxlength="1000" value=""
+                 onkeyup="this.value=this.value.substring(0, 1000)"
+                 placeholder="最多可输入1000字"></textarea>
             </div>
-            <div class="part2" style="display:block;"></div>
-            <div class="part3" style="display:none;"></div>
-          </div>
+             
         </div>
-        <div class="page2" style="display:none;">
-          <div class="page2topbox">
-            <span class="myrecordtittle">我的记录单</span>
-            <div class="mydetiles">
-              <span class="page2headpic"></span>
-              <div class="detilestextbox">
-                <div class="textline1">
-                  <span class="lefttext page2name"></span>
-                  <span class="righttext">正常参与/所有会议</span>
-                </div>
-                <div class="textline2">
-                  <span class="lefttext" id="selfinfomation">个人资料 ＞</span>
-                  <span class="righttext" id="proportion">95/100</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="page2body">
-            <div class="page2innerbody">
-              <div class="year"></div>
-              <div class="attendrate">
-                <div class="ratetittle">
-                  <span class="rate">出勤占比图</span>
-                  <!-- <span class="switch">⇌&nbsp;切换会议身份图</span> -->
-                </div>
-                <div class="chart-wrapper">
-                  <canvas id="mountNode"></canvas>
-                </div>
-              </div>
-              <p class="articlegrey"></p>
-              <div class="attenddetailtittle">出勤明细</div>
-              <p class="articlegrey"></p>
-              <div class="attenddetailtext">
-                <div data-text="" class="absenteeism statedetails">
-                  <p>缺勤</p>
-                  <div class="attendbox" style="display:none;"></div>
-                </div>
-                <div data-text="" class="askflv statedetails">
-                  <p>请假</p>
-                  <div class="attendbox" style="display:none;"></div>
-                </div>
-                <div data-text="" class="late statedetails">
-                  <p>迟到</p>
-                  <div class="attendbox" style="display:none;"></div>
-                </div>
-                <div data-text="" class="normal statedetails">
-                  <p>正常</p>
-                  <div class="attendbox" style="display:none;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="partbox">
+          <div class="part1" style="display:none;"></div>
+          <div class="part2" style="display:block;"></div>
+          <div class="part3" style="display:none;"></div>
         </div>
-        <div class="page3" style="display:none;">
-          <div class="page3topbox">
-            <div class="page3headpic"></div>
-            <div class="page3briefmsg">
-              <p id="page3name"></p>
-              <p class="page3email"></p>
-              <p class="certification">企业认证</p>
-            </div>
-            <span class="moreinfoicon"></span>
-          </div>
-          <div class="page3bodybox">
-            <p class="myupload">我上传的</p>
-            <p class="meetingset">会议设置</p>
-            <p class="allset">账号与安全</p>
-            <p class="about">关于</p>
-          </div>
-        </div>
-        <p class="pageboxwrongtips">通信错误，请重试</p>
+       
       </div>
+      <div class="page2" style="display:none;">
+        <div class="page2topbox">
+          <span class="myrecordtittle">我的记录单</span>
+          <div class="mydetiles">
+            <span class="page2headpic"></span>
+            <div class="detilestextbox">
+              <div class="textline1">
+                <span class="lefttext page2name"></span>
+                <span class="righttext">正常参与/所有会议</span>
+              </div>
+              <div class="textline2">
+                <span class="lefttext" id="selfinfomation">个人资料 ＞</span>
+                <span class="righttext" id="proportion">95/100</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page2body">
+          <div class="page2innerbody">
+            <div class="year"></div>
+            <div class="attendrate">
+              <div class="ratetittle">
+                <span class="rate">出勤占比图</span>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="mountNode"></canvas>
+              </div>
+            </div>
+            <p class="articlegrey"></p>
+            <div class="attenddetailtittle">出勤明细</div>
+            <p class="articlegrey"></p>
+            <div class="attenddetailtext">
+              <div data-text="" class="absenteeism statedetails">
+                <p>正常</p>
+                <div class="attendbox" style="display:none;"></div>
+              </div>
+              <div data-text="" class="askflv statedetails">
+                <p>缺勤</p>
+                <div class="attendbox" style="display:none;"></div>
+              </div>
+              <div data-text="" class="late statedetails">
+                <p>迟到</p>
+                <div class="attendbox" style="display:none;"></div>
+              </div>
+              <div data-text="" class="normal statedetails">
+                <p>请假</p>
+                <div class="attendbox" style="display:none;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page3" style="display:none;">
+        <div class="page3topbox">
+          <div class="page3headpic"></div>
+          <div class="page3briefmsg">
+            <p id="page3name"></p>
+            <p class="page3email"></p>
+            <p class="certification">企业认证</p>
+          </div>
+          <span class="moreinfoicon"></span>
+        </div>
+        <div class="page3bodybox">
+          <p class="myupload">我上传的</p>
+          <p class="meetingset">会议设置</p>
+          <p class="allset">账号与安全</p>
+          <p class="about">关于</p>
+        </div>
+      </div>
+      <span class="partsmask" style="display:none;"></span>
+      <div class="la-ball-clip-rotate-multiple">
+        <div></div>
+        <div></div>
+      </div>
+      <p class="pageboxwrongtips"></p>
       <div class="bottombox">
         <div style="color:#1EACF6">
           <span class="bottomlogo1select"></span>
@@ -289,11 +299,13 @@
       laydate.render({
         elem: "#reservationstart",
         type: "datetime",
+        isInitValue: false,
         min: 0
       });
       laydate.render({
         elem: "#reservationend",
         type: "datetime",
+        isInitValue: false,
         min: 0
       });
     });

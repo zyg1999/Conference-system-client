@@ -8,7 +8,7 @@ let inputs = document.getElementsByTagName('input');
 let loginbnt = document.getElementsByClassName('loginBotton')[0];
 let del = document.getElementsByClassName('del')[0];
 let wrongtips = document.getElementsByClassName('wrongtips')[0];
-let url = 'http://localhost:8888/';//'http://192.168.137.1:8888/'
+let url = 'http://www.shidongxuan.top/pages/';//'http://192.168.137.1:8888/'
 
 let height = window.screen.height;
 let warp=document.getElementsByClassName('warp')[0];

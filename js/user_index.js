@@ -6,10 +6,19 @@ require('./init.js');
 window.onload = function() {
     require('./chart.js');
 }
+window.addEventListener(
+    "touchmove",
+    function (event) {
+      if (event.touches.length > 1) {
+        event.preventDefault();
+    }
+    },
+    { passive: false }
+  );
 
 var ajax = require('./public_Ajax.js').ajax;
 var ajax2 = require('./public_Ajax.js').ajax2;
-let url = 'http://localhost:8888/'; //'http://192.168.137.1:8888/'
+let url = 'http://www.shidongxuan.top/pages/'; //'http://192.168.137.1:8888/'
 let sexflag;
 //顶部点击切换
 let page1topspan = document.getElementsByClassName('page1top')[0].children;
@@ -57,7 +66,13 @@ for (let i = 0; i < bottoms.length; i++) {
         }
     }, false)
 }
-
+let loading = document.getElementsByClassName('la-ball-clip-rotate-multiple')[0];
+function setloading(){
+    loading.style='display:block;'
+}
+function removeloading(){
+    loading.style='display:none';
+}
 //修改信息
 let infomodifica = document.getElementsByClassName('infomodifica')[0];
 let inputs = infomodifica.getElementsByTagName('input');
@@ -86,10 +101,16 @@ function tokenExist(dom, token) {
     }
 }
 
-function updateToken(msg, fun) {
+function updateToken(msg, fun,arg=undefined) {
     sessionStorage.removeItem('token');
     sessionStorage.setItem('token', msg);
-    fun();
+    if(arg===undefined){
+        fun();
+        return;
+    }else{
+        fun(arg);
+    }
+    
 }
 //通信失败
 function deilefail(dom, info) {
@@ -197,9 +218,9 @@ getAllMeetingRomInfo();
 
 function getAllMeetingRomInfo() {
     if (ajaxflag == 0) {
-        /* deilefail('不能多次发送'); */
         return;
     }
+    setloading();
     ajaxflag = 0;
     let token = sessionStorage.getItem('token');
     tokenExist(pageboxwrongtips, token);
@@ -224,13 +245,15 @@ function getAllMeetingRomInfo() {
                     part2innerH += '<div class="item" id=' + data[i].id + '><h2>' + data[i].roomNumber + '</p><div class="mtroomstatus" style="background-color:' + color[res.data[i].status] + ';">' +
                         status[res.data[i].status] + '</div><div class="details"><span class="hot pic2">使用排名第' + (i + 1) +
                         '名</span></div><div class="details"></div>' +
-                        '<div class="details"><span class="accommodate pic2">可容纳' + data[i].content + '人</span></div><div class="reservationbtn" nonce="' + res.data[i].status + '"id=' + res.data[i].status + ' style="background-color:' + color[res.data[i].status] + ';">' + '预</div></div>';
+                        '<div class="details"><span class="accommodate pic2">可容纳' + data[i].content + '人</span></div><div class="reservationbtn" data-id="' + res.data[i].status + '"id=' + res.data[i].status + ' style="background-color:' + color[res.data[i].status] + ';">' + '预</div></div>';
                 }
                 parts[1].innerHTML = part2innerH;
+                removeloading();
                 reservation();
             }
         },
         fail: function() {
+            removeloading();
             ajaxflag = 1;
             deilefail(pageboxwrongtips, '通信失败');
         }
@@ -351,9 +374,9 @@ function scheduledMeeting() {
 //获取我正在进行或还未进行的会议
 function getMyMeetingNow() {
     if (ajaxflag == 0) {
-        /* deilefail(pageboxwrongtips, '不能多次发送'); */
         return;
     }
+    setloading();
     ajaxflag = 0;
     let token = sessionStorage.getItem('token');
     tokenExist(pageboxwrongtips, token);
@@ -370,6 +393,7 @@ function getMyMeetingNow() {
             ajaxflag = 1;
             if (res.status == 100) {
                 updateToken(res.msg, getMyMeetingNow);
+                removeloading();
             } else if (res.status == 0) {
                 let data = res.data;
                 if (data.length == 0) {
@@ -380,12 +404,14 @@ function getMyMeetingNow() {
                 let status = ['', '结束', '正在进行', '暂未开始'];
                 let color = ['', '#e80a0a', '#04C756', '#EBA704'];
                 for (let i = 0; i < data.length; i++) {
-                    part1IneerH += '<div class="item" nonce=' + data[i].meetingId + '><span class="meetingtittle">' + data[i].meetingName + '</span><span class="meetingstatus" style="background-color:' + color[res.data[i].status] + '";>' + status[data[i].status] + '</span>' +
-                        '<div class="more"></div><div class="details"><span class="people pic1">' + data[i].peopleNum + '人</span><span class="myself pic1">' + data[i].masterName + '</span></div>' +
+                    part1IneerH += '<div class="item" data-id=' + data[i].meetingId + '><span class="meetingtittle">' + data[i].meetingName + '</span><span class="meetingstatus" style="background-color:' + color[res.data[i].status] + '";>' + status[data[i].status] + '</span>' +
+                        '<div class="more"></div><ul class="userselect" style="display:none"><li class="askforleave">请假</li><li class="lookmore">查看详情</li></ul><div class="details"><span class="people pic1">' + data[i].peopleNum + '人</span><span class="myself pic1">' + data[i].masterName + '</span></div>' +
                         '<div class="details"><span class="adress pic1">' + data[i].roomName + '</span><span class="meettime pic1">' + countTime(data[i].endTime, data[i].startTime) + '分钟</span></div><div class="details">' +
                         '<span class="sumtime pic1">' + data[i].startTime + '-' + data[i].endTime + '</span></div></div>'
                 }
                 parts[0].innerHTML = part1IneerH;
+                removeloading();
+                clickMore();
                 willMeeting();
             }
         },
@@ -395,9 +421,20 @@ function getMyMeetingNow() {
         }
     })
 }
+function createData(timeString){
+    var arr = timeString.split(/[- :]/)
+    var s = new Date();
+    s.setFullYear(arr[0]);
+    s.setMonth(arr[1]);
+    s.setDate(arr[2]);
+    s.setHours(arr[3]);
+    s.setMinutes(arr[4]);
+    s.setSeconds(arr[5]);
+    return s;
+}
 
 function countTime(endTime, startTime) {
-    return Number.parseInt((new Date(endTime) - new Date(startTime)) / 1000 / 60);
+    return Number.parseInt((Number.parseInt(createData(endTime)/ 1000) - Number.parseInt(createData(startTime)/ 1000))  / 60);
 }
 let mymeetingtop = document.getElementsByClassName('mymeetingtop')[0];
 mymeetingtop.addEventListener('click', function() {
@@ -409,6 +446,7 @@ function getHistoryRecord() {
     if (ajaxflag == 0) {
         return;
     }
+    setloading();
     ajaxflag = 0;
     let token = sessionStorage.getItem('token');
     tokenExist(pageboxwrongtips, token);
@@ -425,6 +463,7 @@ function getHistoryRecord() {
             ajaxflag = 1;
             if (res.status == 100) {
                 updateToken(res.msg, getHistoryRecord);
+                removeloading();
             } else if (res.status == 0) {
                 let data = res.data;
                 if (data .length == 0) {
@@ -439,18 +478,20 @@ function getHistoryRecord() {
                     rolestatus = 2;
                     if (ID == data[i].masterId)
                         rolestatus = 1;
-                    part3IneerH += '<div class="item" nonce=' + data[i].meetingId + '><span style="display:line-block; font-size:0.28rem;">' + data[i].meetingName + '</span><span class="mtrole" style="background-color:' + color[rolestatus] + '">' + part3role[rolestatus] + '</span>' +
+                    part3IneerH += '<div class="item" data-id=' + data[i].meetingId + '><span style="display:line-block; font-size:0.28rem;">' + data[i].meetingName + '</span><span class="mtrole" style="background-color:' + color[rolestatus] + '">' + part3role[rolestatus] + '</span>' +
                         '<div class="details"><span class="people pic3">' + data[i].peopleNum + '人</span><span class="take pic3">' + attendance[data[i].userStatus] + '</span></div><div class="details">' +
                         '<span class="adress pic3">' + data[i].roomName + '</span><span class="meettime pic3">' + countTime(data[i].endTime, data[i].startTime) + '分钟</span></div><div class="details">' +
                         '<span class="myself pic3">' + data[i].masterName + '</span><span class="today pic3">' + data[i].endTime.substr(0, 10) + '</span></div><div class="details">' +
                         '<span class="sumtime pic3">' + data[i].startTime + '-' + data[i].endTime + '</span></div><div class="details"><span class="summary pic3">' + data[i].meetingIntro + '</span></div></div>'
                 }
                 parts[2].innerHTML = part3IneerH;
+                removeloading();
                 hisotyMeetDetils();
             }
         },
         fail: function() {
-            ajaxflag = 1
+            ajaxflag = 1;
+            removeloading();
             deilefail(pageboxwrongtips, '通信失败');
         }
     })
@@ -474,7 +515,6 @@ function getSelfInfoByphoneNum() {
         token: token,
         success: function(xhr) {
             let res = JSON.parse(xhr.responseText);
-            
             if (res.status == 0) {
                 userInfo = res.data;
                 fillInfo();
@@ -483,7 +523,6 @@ function getSelfInfoByphoneNum() {
             }
         },
         fail: function() {
-            
             deilefail(pageboxwrongtips, '通信失败');
         }
     })
@@ -530,6 +569,7 @@ bottoms[0].addEventListener('click', function() {
     getAllMeetingRomInfo();
     reservation();
 });
+
 let meetingstarttime = document.getElementsByClassName('meetingstarttime')[0];
 let meetingendtime = document.getElementsByClassName('meetingendtime')[0];
 let meetingadress = document.getElementsByClassName('meetingadress')[0];
@@ -543,24 +583,51 @@ let metdetilsreturn = document.getElementsByClassName('metdetilsreturn')[0];
 let meetingdetailspage = document.getElementsByClassName('meetingdetailspage')[0];
 metdetilsreturn.addEventListener('click', function() {
     meetingdetailspage.style = 'display:none';
+   /*  partsmask.style='display:none';  */
 });
+let clickflag;
+let partsmask = document.getElementsByClassName('partsmask')[0];
+partsmask.addEventListener('click',function(){
+    partsmask.style='display:none';
+    userselects[clickflag].style='display:none';
+})
+//请假或查看详细信息
+let userselects;
+function clickMore(){
+    let mores = document.getElementsByClassName('more');
+    userselects=document.getElementsByClassName('userselect');
+    for(let i=0;i<mores.length;i++){
+        mores[i].addEventListener('click',function(){
+            userselects[i].style='display:block';
+            partsmask.style='display:block';
+            clickflag=i;
+        })
+    }
+}
+
+
 
 let meetingId;
 let meetingPeoplealr;
 let masterID;
+let meetingnowstatus=document.getElementsByClassName('meetingnowstatus')[0];
 //即将开的会议的详细信息
 function willMeeting() {
     let part1Items = document.getElementsByClassName('part1')[0].children;
+    let lookmores = document.getElementsByClassName('lookmore');
     let meetingdetailspage = document.getElementsByClassName('meetingdetailspage')[0];
     let meetingdetails;
-    for (let i = 0; i < part1Items.length; i++) {
-        part1Items[i].addEventListener('click', function() {
+    for (let i = 0; i < lookmores.length; i++) {
+        lookmores[i].addEventListener('click', function() {
             meetingPeoplealr=[];
             peoplelist.innerHTML = '';
             meetingdetailspage.style = 'display:block';
-            meetingId = part1Items[i].nonce;
+            partsmask.style='display:none;';
+            userselects[i].style='display:none';
+            meetingId = part1Items[i].attributes.getNamedItem("data-id").nodeValue;//更新meetingID
             let token = sessionStorage.getItem('token');
             tokenExist(pageboxwrongtips, token);
+            setloading();
             ajax({
                 url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/getMeetingById.do',
                 type: 'post',
@@ -572,12 +639,13 @@ function willMeeting() {
                     let res = JSON.parse(xhr.responseText);
                     if (res.status == 0) {
                         meetingdetails = res.data;
-                        meetingdetailspage.id=meetingId;
                         meetingdetilname.innerHTML = meetingdetails.meetingName;
                         attendancepeosum.innerHTML = meetingdetails.memberStatus.length + '人';
                         meetingstarttime.innerHTML = '开始时间：' + meetingdetails.startTime;
                         meetingendtime.innerHTML = '结束时间：' + meetingdetails.endTime;
                         meetingadress.innerHTML = '会议地点：' + meetingdetails.roomName;
+                        if(res.data.status==2)
+                            meetingnowstatus.innerHTML='正在进行';
                         introductioncontext.innerHTML = meetingdetails.meetingIntro;
                         masterID=meetingdetails.masterId;
                         peoplelist.innerHTML = '<p> ' + meetingdetails.masterName + '&nbsp;&nbsp;(组织者)</p> <span class="peoplestatus"></span>';
@@ -595,17 +663,54 @@ function willMeeting() {
                     } else if (res.status == 100) {
                         updateToken(res.msg, willMeeting);
                     }
+                    removeloading();
                 },
                 fail: function() {
+                    removeloading();
                     deilefail(pageboxwrongtips, '通信失败');
                 }
             });
         })
+
+    }
+    let askforleaveWill = document.getElementsByClassName('askforleave');
+    let leaveID;
+    let id = sessionStorage.getItem('id');
+    for(let i=0;i<askforleaveWill.length;i++){
+        askforleaveWill[i].addEventListener('click',function(){
+            leaveID=part1Items[i].attributes.getNamedItem("data-id").nodeValue;
+            partsmask.style='display:none;';
+            let token = sessionStorage.getItem('token');
+            tokenExist(pageboxwrongtips, token);
+            setloading();
+            ajax({
+                url:'http://www.shidongxuan.top/smartMeeting_Web/user/applyLeave.do',
+                type:'post',
+                contenttype: 'urlencode',
+                async:true,
+                data:{userId:id,meetingId:leaveID},
+                token:token,
+                success:function(xhr){
+                    let res = JSON.parse(xhr.responseText);
+                    if (res.status == 0) {
+                        userselects[i].style='display:none';
+                        partsmask.style='display:none';
+                        deilefail(pageboxwrongtips,'请假成功');
+                    }else if (res.status == 100) {
+                        updateToken(res.msg, willMeeting);
+                    }
+                    removeloading();
+                },
+                fail: function() {
+                    removeloading();
+                    deilefail(pageboxwrongtips, '通信失败');
+                }
+            })
+        });
     }
 }
 
 function updatePeopleList(){
-    let id = document.getElementsByClassName('meetingdetailspage')[0].id;
     let meetingdetails;
     meetingPeoplealr=[];
     peoplelist.innerHTML = '';
@@ -617,7 +722,7 @@ function updatePeopleList(){
         type: 'post',
         contenttype: 'urlencode',
         async: true,
-        data: { meetingId:  id},
+        data: { meetingId:  meetingId},
         token: token,
         success: function(xhr) {
             let res = JSON.parse(xhr.responseText);
@@ -641,9 +746,9 @@ function updatePeopleList(){
                     }
                     meetingPeoplealr.push(obj);
                 }
-                lookAllPeopleStatus(id);
+                lookAllPeopleStatus(meetingId);
             } else if (res.status == 100) {
-                updateToken(res.msg, willMeeting);
+                updateToken(res.msg, updatePeopleList);
             }
         },
         fail: function() {
@@ -657,6 +762,7 @@ let allPeople;
 //请求所有人
 function getAllPeople(){
     allPeople=new Map();
+    setloading();
     let token = sessionStorage.getItem('token');
             tokenExist(pageboxwrongtips, token);
             ajax({
@@ -685,18 +791,20 @@ function getAllPeople(){
                         let peopleSelectListinner='';
                         for (let key of allPeople.keys()) {
                             if(allPeople.get(key).add===false){
-                                peopleSelectListinner+='<label class="onepeople"><p class="peopleName">'+allPeople.get(key).username+'</p><input nonce="'+allPeople.get(key).id+'" type="checkbox" class="checkbox"></label>'
+                                peopleSelectListinner+='<label class="onepeople"><p class="peopleName">'+allPeople.get(key).username+'</p><input data-id="'+allPeople.get(key).id+'" type="checkbox" class="checkbox"></label>'
                             }else{
-                                peopleSelectListinner+='<label class="onepeople"><p class="peopleName">'+allPeople.get(key).username+'</p><input nonce="'+allPeople.get(key).id+'" type="checkbox" class="checkbox" disabled="false" checked="true"></label>'
+                                peopleSelectListinner+='<label class="onepeople"><p class="peopleName">'+allPeople.get(key).username+'</p><input data-id="'+allPeople.get(key).id+'" type="checkbox" class="checkbox" disabled="false" checked="true"></label>'
                             }
                         }
                         peopleSelectList.innerHTML=peopleSelectListinner;
 
                     }else if (res.status == 100) {
-                        updateToken(res.msg, willMeeting);
+                        updateToken(res.msg, getAllPeople);
                     }
+                    removeloading();
                 },
                 fail: function (err) {
+                    removeloading();
                     deilefail(pageboxwrongtips, '通信失败');
                 }
             })
@@ -726,19 +834,20 @@ function addPeopleToMeet(meetingId){
     for(let i=0;i<checkboxs.length;i++){
         if(checkboxs[i].checked&&!checkboxs[i].disabled){
             if(count==0){
-                peopleAdd='userIds='+checkboxs[i].nonce;
-                idsList.push(checkboxs[i].nonce);
+                peopleAdd='userIds='+checkboxs[i].attributes.getNamedItem("data-id").nodeValue;
+                idsList.push(checkboxs[i].attributes.getNamedItem("data-id").nodeValue);
                 count=1;
                 continue;
             }
-            peopleAdd+=','+checkboxs[i].nonce;
-            idsList.push(checkboxs[i].nonce);
+            peopleAdd+=','+checkboxs[i].attributes.getNamedItem("data-id").nodeValue;
+            idsList.push(checkboxs[i].attributes.getNamedItem("data-id").nodeValue);
         }
         
     }
     peopleAdd+='&meetingId='+meetingId;
     let token = sessionStorage.getItem('token');
     tokenExist(pageboxwrongtips, token);
+    let newid = arguments[0];
     //发送与会人员
     ajax2({
         url: "http://www.shidongxuan.top/smartMeeting_Web/meeting/inviteMembers.do", 
@@ -751,15 +860,17 @@ function addPeopleToMeet(meetingId){
             let res = JSON.parse(xhr.responseText);
             if (res.status == 0) {
                 deilefail(pageboxwrongtips, '添加成功');
+                addPeoplbox.style='display:none;';
+                //添map
+                for(let i=0;i<idsList.length;i++){
+                    allPeople.get(Number.parseInt(idsList[i])).add=true;
+                }
+                //刷新列表
+                updatePeopleList();
+            }else if(res.status==100){
+                updateToken(res.mag,addPeopleToMeet,newid);
             }
-            addPeoplbox.style='display:none;';
-
-            //添map
-            for(let i=0;i<idsList.length;i++){
-                allPeople.get(Number.parseInt(idsList[i])).add=true;
-            }
-            //刷新列表
-            updatePeopleList();
+            
         },
         fail: function (err) {
             deilefail(pageboxwrongtips, '通信失败');
@@ -774,24 +885,36 @@ fork2.addEventListener('click',function(){
 
 //开始会议
 let startandEnd = document.getElementsByClassName('startandEnd')[0];
-let startEndFlag = 0;
+let startFlag;
 startandEnd.onclick=function(){
-    if(startEndFlag==0){
-        //开始会议
-        startandEnd.style='background-image:url(../pic/icon_meeting_ending.png);';
-        
-        startEndMeeting(startEndFlag);
-        startEndFlag=1;
-
-    }else if(startEndFlag==1){
-        startandEnd.style='background-image:url(../pic/icon_meeting_start.png);';
-        startEndMeeting(startEndFlag);
-        startEndFlag=0;
+    startFlag=0;
+    if(startFlag==0){
+        let meetingstarttime=document.getElementsByClassName('meetingstarttime')[0].innerHTML.split('：')[1];
+        meetingstarttime=meetingstarttime.replace(/-/g, '/');
+        if(Number.parseInt(new Date(meetingstarttime)-new Date()/1000/60)<=10){
+            startandEnd.style='background-image:url(../pic/icon_meeting_ending.png);';
+            startEndMeeting(0);   
+        }else{
+            deilefail(pageboxwrongtips, '预约开始时间前10分钟可开始');
+        }
     }
+    else if(startFlag==1){
+        let meetingendtime=document.getElementsByClassName('meetingendtime')[0].innerHTML.split('：')[1];
+        meetingendtime=meetingendtime.replace(/-/g, '/');
+        if(Number.parseInt(new Date(meetingendtime)-new Date()/1000/60)<=10){
+            startandEnd.style='background-image:url(../pic/icon_meeting_start.png);';
+            startEndMeeting(1);  
+        }else{
+            deilefail(pageboxwrongtips, '预约结束时间前10分钟可结束');
+        }
+    }
+    
+    
 }
 function startEndMeeting(flag){
     let token = sessionStorage.getItem('token');
     tokenExist(pageboxwrongtips, token);
+    let newflag = arguments[0];
     let id = document.getElementsByClassName('meetingdetailspage')[0].id;
    let  thisreq=flag?'endMeeting':'startMeeting';
     ajax({
@@ -806,7 +929,7 @@ function startEndMeeting(flag){
             if (res.status == 0) {
                 deilefail(pageboxwrongtips, res.msg);
             } else if (res.status == 100) {
-                updateToken(res.msg, getSelfInfoByphoneNum);
+                updateToken(res.msg, startEndMeeting,newflag);
             } 
             else if(res.status==1){
                 deilefail(pageboxwrongtips, res.msg);
@@ -822,11 +945,11 @@ let lookpeoplestatus = document.getElementsByClassName('lookpeoplestatus')[0];
 let statusList = document.getElementsByClassName('statusList')[0];
 function lookAllPeopleStatus(id){
     let peoplestatus = document.getElementsByClassName('peoplestatus')[0];
-    
-    
     peoplestatus.addEventListener('click',function(){
+        setloading();
         lookpeoplestatus.style='display:flex';
         let token = sessionStorage.getItem('token');
+        let newid = arguments[0];
     tokenExist(pageboxwrongtips, token);
     ajax({
         url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/getMeetingById.do',
@@ -845,9 +968,15 @@ function lookAllPeopleStatus(id){
                     '<p class="statusname">'+res.data.memberStatus[i].username+'</p><span class="statusInner" style="background-color:'+color[res.data.memberStatus[i].userStatus]+'">'+attendance[res.data.memberStatus[i].userStatus]+'</span></div>';
                 }
                 statusList.innerHTML=statusListinner;
+                removeloading();
+            }else if(res.status==100){
+                updateToken(res.msg,lookAllPeopleStatus,newid);
+                removeloading();
             }
+            
         },
         fail:function(){
+            removeloading();
             deilefail(pageboxwrongtips, '通信失败');
         }
     })
@@ -870,7 +999,8 @@ function hisotyMeetDetils(){
     for(let i=0;i<part3Items.length;i++){
         part3Items[i].addEventListener('click',function(){
             //获取历史会议详情
-            let id = part3Items[i].nonce;
+            setloading();
+            let id = part3Items[i].attributes.getNamedItem("data-id").nodeValue;
             getHistoryDetails(id);
             historymeetingbox.style='display:block';
         })
@@ -878,8 +1008,10 @@ function hisotyMeetDetils(){
 }
 
 function getHistoryDetails(id){
+    setloading();
     let token = sessionStorage.getItem('token');
     tokenExist(pageboxwrongtips, token);
+    let newid = arguments[0];
     ajax({
         url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/getMeetingById.do',
         type: 'post',
@@ -890,6 +1022,8 @@ function getHistoryDetails(id){
         success: function(xhr) {
             let res = JSON.parse(xhr.responseText);
             if (res.status == 0) {
+                let meetingName = document.getElementsByClassName('hismeetingdetilname')[0];
+                meetingName.innerHTML=res.data.meetingName;
                 let color=['','#04C756','#e80a0a', '#EBA704','#04d4eb'];
                 let hispeodeatilsinner='';
                 for(let i=0;i<res.data.memberStatus.length;i++){
@@ -898,13 +1032,105 @@ function getHistoryDetails(id){
                 }
                 let hispeoplelis=document.getElementsByClassName('hispeoplelist')[0];
                 hispeoplelis.innerHTML=hispeodeatilsinner;
+                showNotes(id,part3note)
+                removeloading();
             } else if (res.status == 100) {
-                updateToken(res.msg, getSelfInfoByphoneNum);
+                updateToken(res.msg, getHistoryDetails,newid);
+                removeloading();
             } 
             
         },
         fail: function() {
+            removeloading();
+            deilefail(pageboxwrongtips, '通信失败');
+        }
+    });
+}
+
+//part1会议笔记
+let takenotes = document.getElementsByClassName('takenotes')[0];
+let notebox = document.getElementsByClassName('notebox')[0];
+document.getElementById('note').onkeyup = function() {        
+    document.getElementById('text-count').innerHTML=this.value.length;
+}
+let notereturn= document.getElementsByClassName('notereturn')[0];
+notereturn.addEventListener('click',function(){
+    notebox.style='display:none;';
+});
+//显示笔记页面
+takenotes.addEventListener('click',function(){
+    showNotes(meetingId,part1note);
+    notebox.style='display:block';
+});
+let notessave = document.getElementsByClassName('notessave')[0];
+notessave.addEventListener('click',function(){
+    editeUserNotes();
+})
+let notes = document.getElementsByClassName('notescontent')[0];
+//保存笔记
+function editeUserNotes(){
+    let userId = sessionStorage.getItem('id');
+    setloading();
+    let token = sessionStorage.getItem('token');
+    tokenExist(pageboxwrongtips, token);
+    ajax({
+        url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/editNote.do',
+        type: 'post',
+        contenttype: 'urlencode',
+        async: true,
+        data: { meetingId:meetingId,userId:userId,note:notes.value},
+        token: token,
+        success: function(xhr) {
+            let res = JSON.parse(xhr.responseText);
+            if (res.status == 0) {
+                deilefail(pageboxwrongtips,'保存成功');
+                removeloading();
+            } else if (res.status == 100) {
+                updateToken(res.msg, getHistoryDetails);
+                removeloading();
+            }  
+        },
+        fail: function() {
+            removeloading();
             deilefail(pageboxwrongtips, '通信失败');
         }
     })
+}
+//显示笔记
+function showNotes(meetingID,handle){
+    let userId = sessionStorage.getItem('id');
+    setloading();
+    let token = sessionStorage.getItem('token');
+    tokenExist(pageboxwrongtips, token);
+    ajax({
+        url: 'http://www.shidongxuan.top/smartMeeting_Web/meeting/getMeetingNote.do',
+        type: 'post',
+        contenttype: 'urlencode',
+        async: true,
+        data: { meetingId:meetingID,userId:userId},
+        token: token,
+        success: function(xhr) {
+            let res = JSON.parse(xhr.responseText);
+            if (res.status == 0) {
+                handle(res.data);
+                removeloading();
+            } else if (res.status == 100) {
+                updateToken(res.msg, getHistoryDetails);
+                removeloading();
+            }
+        },
+        fail: function() {
+            removeloading();
+            deilefail(pageboxwrongtips, '通信失败');
+        }
+    })
+}
+function part1note(note){
+    notes.value=note;
+}
+let notesdetails = document.getElementsByClassName('notesdetails')[0];
+function part3note(note){
+    if(note=='')
+     return;
+    notesdetails.innerHTML=note;
 }

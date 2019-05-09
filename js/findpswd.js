@@ -2,7 +2,7 @@ import '../style/reset.css';
 import '../style/findpswd.css';
 
 require('./init.js');
-let url = 'http://localhost:8888/'; //'http://192.168.137.1:8888/'
+let url = 'http://www.shidongxuan.top/pages/'; //'http://192.168.137.1:8888/'
 var ajax = require('./public_Ajax.js').ajax;
 let returninco = document.getElementsByClassName('returninco')[0];
 returninco.addEventListener('click', function() {
