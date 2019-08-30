@@ -22,6 +22,9 @@
 ![](https://github.com/zyg1999/Conference-system-client/blob/master/images/Screenshot_20190830_185610_com.android.chrome.jpg)
 ![](https://github.com/zyg1999/Conference-system-client/blob/master/images/Screenshot_20190830_185655_com.android.chrome.jpg)
 ![](https://github.com/zyg1999/Conference-system-client/blob/master/images/Screenshot_20190830_185709_com.android.chrome.jpg)
+
+- 修改密码
+
 ![](https://github.com/zyg1999/Conference-system-client/blob/master/images/Screenshot_20190830_185822_com.android.chrome.jpg)
 
 
